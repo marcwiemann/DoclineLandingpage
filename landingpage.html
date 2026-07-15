@@ -1,0 +1,641 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="de"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed": "#e2e2e2",
+                "surface-bright": "#ffffff",
+                "secondary-fixed-dim": "#c6c6c7",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "surface-variant": "#eceef1",
+                "secondary-container": "#dfe0e0",
+                "surface-dim": "#e6e8ec",
+                "on-secondary-fixed": "#1a1c1c",
+                "on-tertiary-container": "#848484",
+                "tertiary": "#000000",
+                "background": "#ffffff",
+                "surface-container-high": "#eceef1",
+                "on-secondary": "#ffffff",
+                "on-surface": "#1a1b22",
+                "surface-container": "#f1f3f5",
+                "tertiary-fixed-dim": "#c6c6c6",
+                "surface-container-low": "#f7f8fa",
+                "tertiary-fixed": "#e2e2e2",
+                "on-secondary-container": "#616363",
+                "on-primary-container": "#848484",
+                "on-surface-variant": "#4c4546",
+                "primary": "#000000",
+                "outline": "#7e7576",
+                "on-error-container": "#93000a",
+                "tertiary-container": "#1b1b1b",
+                "primary-container": "#1b1b1b",
+                "secondary": "#5d5f5f",
+                "inverse-surface": "#2f3038",
+                "primary-fixed": "#e2e2e2",
+                "on-primary-fixed": "#1b1b1b",
+                "surface-tint": "#5e5e5e",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed-variant": "#474747",
+                "surface-container-highest": "#e6e8ec",
+                "on-secondary-fixed-variant": "#454747",
+                "outline-variant": "#e2e4e8",
+                "inverse-primary": "#c6c6c6",
+                "error": "#ba1a1a",
+                "primary-fixed-dim": "#c6c6c6",
+                "on-primary-fixed-variant": "#474747",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#1b1b1b",
+                "on-background": "#1a1b22",
+                "surface": "#ffffff",
+                "inverse-on-surface": "#f1effa",
+                "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-max-width": "1280px",
+                "section-gap": "80px",
+                "margin-desktop": "48px",
+                "margin-mobile": "16px",
+                "gutter": "24px",
+                "unit": "4px"
+            },
+            "fontFamily": {
+                "label-md": ["Urbanist"],
+                "headline-xl": ["Urbanist"],
+                "headline-lg": ["Urbanist"],
+                "body-sm": ["Urbanist"],
+                "body-lg": ["Urbanist"],
+                "code": ["Urbanist"],
+                "headline-md": ["Urbanist"],
+                "headline-lg-mobile": ["Urbanist"],
+                "body-md": ["Urbanist"]
+            },
+            "fontSize": {
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "code": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script>
+<title>Docline – Sprachgesteuerte KI-Dokumentation für Arztpraxen</title>
+<meta name="description" content="Docline ist der erste sprachgesteuerte KI-Assistent für Arztpraxen: Patientengespräche in Echtzeit dokumentieren, ICD-10-Codierung und Arztbrief-Abgleich – DSGVO-konform mit Serverstandort in Österreich.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_AT">
+<meta property="og:title" content="Docline – KI-Dokumentation für Arztpraxen">
+<meta property="og:description" content="Ärzte behandeln. Docline erledigt den Rest. Sprachgesteuerte, DSGVO-konforme Dokumentation in Echtzeit.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23000000'/><text x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='700' fill='%23ffffff' text-anchor='middle'>D</text></svg>">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  html,body{overflow-x:hidden;}
+  /* Statistik-Kacheln (fehlten zuvor komplett) */
+  .stat-card{background:#ffffff;border:1px solid #e2e4e8;box-shadow:0 1px 2px rgba(16,16,20,.04),0 10px 30px -14px rgba(16,16,20,.18);transition:transform .3s ease,box-shadow .3s ease;}
+  .stat-card:hover{transform:translateY(-4px);box-shadow:0 6px 12px rgba(16,16,20,.06),0 20px 44px -18px rgba(16,16,20,.28);}
+  /* Finale CTA-Section – monochrome dunkle Fläche (sonst weißer Text auf weiß) */
+  .docline-monochrome{background:radial-gradient(120% 130% at 50% -10%,#2f3038 0%,#16171d 48%,#000000 100%);}
+  /* Scroll-Reveal – nur mit aktivem JS, damit ohne JS nichts unsichtbar bleibt */
+  .js .animate-on-scroll{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;will-change:opacity,transform;}
+  .js .animate-on-scroll.visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.js .animate-on-scroll{opacity:1;transform:none;transition:none;}.stat-card{transition:none;}.stat-card:hover{transform:none;}}
+  /* Voice Orb – 1:1 aus der App (frontend .dl-orb, monochrome Graphit-Variante) */
+  .dl-orb{position:relative;display:grid;place-items:center;isolation:isolate;}
+  .dl-orb-halo,.dl-orb-ring{position:absolute;inset:0;border-radius:50%;}
+  .dl-orb-halo{inset:-30%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 50% 47%,color-mix(in oklab,var(--dl-orb-core) 44%,transparent) 0%,color-mix(in oklab,var(--dl-orb-core) 15%,transparent) 38%,transparent 68%);filter:blur(11px);opacity:.85;}
+  .dl-orb-ring{border:1px solid color-mix(in oklab,var(--dl-orb-ring) 92%,transparent);box-shadow:inset 0 0 16px -2px color-mix(in oklab,var(--dl-orb-core) 22%,transparent),0 0 0 .5px rgba(255,255,255,.55);}
+  .dl-orb-ring-2{position:absolute;inset:11%;border-radius:50%;border:1px solid color-mix(in oklab,var(--dl-orb-ring) 60%,transparent);opacity:.7;}
+  .dl-orb-core{position:relative;border-radius:50%;display:grid;place-items:center;color:#fff;background:radial-gradient(125% 125% at 32% 24%,color-mix(in oklab,var(--dl-orb-core) 50%,#ffffff) 0%,var(--dl-orb-core) 46%,color-mix(in oklab,var(--dl-orb-core) 76%,#000000) 100%);box-shadow:0 14px 32px -8px color-mix(in oklab,var(--dl-orb-core) 52%,transparent),0 3px 8px rgba(10,12,16,.22),inset 0 1.5px 1px rgba(255,255,255,.5),inset 0 -12px 22px -10px rgba(0,0,0,.5);}
+  .dl-orb-core::before{content:'';position:absolute;top:9%;left:15%;width:48%;height:36%;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.82),rgba(255,255,255,0) 72%);filter:blur(1.5px);opacity:.9;pointer-events:none;}
+  .dl-orb-dot{width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(255,255,255,.95),rgba(255,255,255,.4) 70%);box-shadow:0 0 9px rgba(255,255,255,.55);}
+  .dl-orb--idle .dl-orb-ring{animation:dl-ring-pulse 4.2s ease-in-out infinite;}
+  .dl-orb--idle .dl-orb-core{animation:dl-core-breath 4.2s ease-in-out infinite;}
+  .dl-orb--idle .dl-orb-halo{animation:dl-halo-breath 4.2s ease-in-out infinite;}
+  .dl-orb--listening .dl-orb-ring,.dl-orb--listening .dl-orb-ring-2{animation:dl-listen-ring 1.6s ease-out infinite;}
+  .dl-orb--listening .dl-orb-ring-2{animation-delay:-.8s;}
+  .dl-orb--listening .dl-orb-halo{opacity:1;}
+  .dl-orb-wave{display:flex;align-items:center;gap:2.5px;height:46%;}
+  .dl-orb-wave span{width:2.5px;border-radius:99px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.72));box-shadow:0 0 7px rgba(255,255,255,.4);animation:dl-owave 1s ease-in-out infinite;}
+  .dl-orb-wave span:nth-child(1){height:30%;}
+  .dl-orb-wave span:nth-child(2){height:60%;animation-delay:-.2s;}
+  .dl-orb-wave span:nth-child(3){height:80%;animation-delay:-.4s;}
+  .dl-orb-wave span:nth-child(4){height:50%;animation-delay:-.3s;}
+  .dl-orb-wave span:nth-child(5){height:25%;animation-delay:-.1s;}
+  @keyframes dl-owave{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1.1);}}
+  @keyframes dl-ring-pulse{0%,100%{transform:scale(1);opacity:.65;}50%{transform:scale(1.045);opacity:1;}}
+  @keyframes dl-core-breath{0%,100%{transform:scale(1);}50%{transform:scale(1.045);}}
+  @keyframes dl-halo-breath{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:.95;transform:scale(1.07);}}
+  @keyframes dl-listen-ring{0%{transform:scale(.9);opacity:.95;}100%{transform:scale(1.24);opacity:0;}}
+  @media (prefers-reduced-motion:reduce){.dl-orb-ring,.dl-orb-ring-2,.dl-orb-core,.dl-orb-halo,.dl-orb-wave span{animation:none!important;}}
+</style>
+</head><body class="bg-surface text-on-surface selection:bg-secondary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-outline-variant">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20">
+        <a href="#" class="text-headline-md font-bold text-primary">Docline</a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a class="text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#produkt">Produkt</a>
+            <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#funktionen">Funktionen</a>
+            <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#vorteile">Vorteile</a>
+            <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#sicherheit">Sicherheit</a>
+            <a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#kontakt">Kontakt</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <button type="button" class="hidden sm:inline-flex px-6 py-2 rounded-lg text-label-md text-primary border border-primary hover:bg-surface-container transition-colors">Login</button>
+            <button type="button" class="px-6 py-2 rounded-lg text-label-md bg-primary text-on-primary hover:opacity-90 transition-opacity shadow-sm">Kostenlos testen</button>
+            <button id="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-primary hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden hidden border-t border-outline-variant bg-surface/95 backdrop-blur-sm px-margin-mobile py-4">
+        <div class="flex flex-col">
+            <a class="py-3 text-body-md text-primary font-semibold" href="#produkt">Produkt</a>
+            <a class="py-3 text-body-md text-on-surface-variant" href="#funktionen">Funktionen</a>
+            <a class="py-3 text-body-md text-on-surface-variant" href="#vorteile">Vorteile</a>
+            <a class="py-3 text-body-md text-on-surface-variant" href="#sicherheit">Sicherheit</a>
+            <a class="py-3 text-body-md text-on-surface-variant" href="#kontakt">Kontakt</a>
+            <button type="button" class="mt-3 px-6 py-3 rounded-lg text-label-md text-primary border border-primary text-center">Login</button>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-20">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-16 md:py-24">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <!-- Text -->
+            <div class="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+                <span class="inline-block px-4 py-1.5 mb-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md uppercase tracking-wider">DIE ZUKUNFT DER DOKUMENTATION</span>
+                <h1 class="text-headline-lg md:text-headline-xl text-primary mb-6 leading-tight">
+                    Ärzte behandeln.<br>
+                    <span class="text-secondary">Docline erledigt den Rest.</span>
+                </h1>
+                <p class="text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto">
+                    Die sprachgesteuerte Praxissoftware, die im Hintergrund mitdokumentiert – von der Anamnese bis zum Arztbrief. Jede klinische KI-Aktion schlägt Docline vor, die Freigabe bleibt bei Ihnen.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-label-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        Jetzt Demo anfordern
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button class="px-8 py-4 border border-outline-variant bg-surface-container-lowest text-primary rounded-xl font-label-md hover:bg-surface-container-low transition-colors">
+                        Funktionsweise entdecken
+                    </button>
+                </div>
+            </div>
+            <!-- Voice-Mode-Oberfläche · voller Block -->
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-2xl" role="img" aria-label="Docline Voice-Mode: dreispaltige Ansicht mit Patientenkontext links, zentralem Voice Orb und Sprachaktivität rechts inklusive bestätigungspflichtigem KI-Vorschlag">
+                    <!-- Fenster-Leiste -->
+                    <div class="flex items-center gap-2 px-5 h-11 border-b border-outline-variant bg-surface-container-low">
+                        <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+                        <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+                        <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+                        <span class="ml-3 text-[12px] font-bold uppercase tracking-wide text-on-surface-variant">Docline · Voice Mode</span>
+                    </div>
+                    <!-- 3-Spalten-Cockpit -->
+                    <div class="flex flex-col sm:flex-row sm:min-h-[520px]">
+                        <!-- LINKS · Patientenkontext -->
+                        <aside class="sm:w-[30%] p-4 space-y-3 border-b sm:border-b-0 sm:border-r border-outline-variant bg-surface-container-low">
+                            <div class="rounded-lg bg-surface-container-lowest border border-outline-variant p-3.5">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-full bg-primary text-on-primary grid place-items-center text-[12px] font-bold">MB</div>
+                                    <div class="min-w-0">
+                                        <div class="text-[15px] font-semibold text-primary leading-tight truncate">Maria Bauer</div>
+                                        <div class="text-[12px] text-on-surface-variant truncate">54 J. · e-card</div>
+                                    </div>
+                                </div>
+                                <div class="mt-2.5 flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-[11px] font-semibold">Akte aktiv</span>
+                                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-[11px] font-semibold">Dauerdiagnose</span>
+                                </div>
+                            </div>
+                            <div class="rounded-lg bg-surface-container-lowest border border-outline-variant p-3.5">
+                                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Dauerdiagnosen</div>
+                                <div class="space-y-1.5">
+                                    <div class="flex items-center gap-2 text-[13px]"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-[11px] font-mono">I10</span><span class="text-on-surface truncate">Hypertonie</span></div>
+                                    <div class="flex items-center gap-2 text-[13px]"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-[11px] font-mono">E11</span><span class="text-on-surface truncate">Diabetes mellitus II</span></div>
+                                </div>
+                            </div>
+                            <div class="rounded-lg bg-surface-container-lowest border border-outline-variant p-3.5">
+                                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Cave</div>
+                                <div class="flex items-center gap-2 text-[13px]"><span class="w-4 h-4 grid place-items-center rounded bg-primary text-on-primary text-[11px] font-bold">!</span><span class="text-on-surface truncate">Penicillin-Allergie</span></div>
+                            </div>
+                        </aside>
+                        <!-- MITTE · Voice Orb -->
+                        <div class="flex-1 flex flex-col items-center justify-center py-12 px-4">
+                            <div class="dl-orb dl-orb--listening" aria-hidden="true" style="--dl-orb-ring:rgba(20,22,28,0.30);--dl-orb-core:#16191f;--dl-orb-halo:rgba(10,10,10,0.06);width:200px;height:200px;">
+                                <div class="dl-orb-halo"></div>
+                                <div class="dl-orb-ring"></div>
+                                <div class="dl-orb-ring-2"></div>
+                                <div class="dl-orb-core" style="width:84px;height:84px;">
+                                    <div class="dl-orb-wave"><span></span><span></span><span></span><span></span><span></span></div>
+                                </div>
+                            </div>
+                            <div class="mt-7 flex items-center gap-2 text-[12px] text-on-surface-variant">
+                                <span class="px-2 py-1 rounded border border-outline-variant font-semibold text-primary">Space</span> start / stop
+                                <span class="mx-1 w-px h-4 bg-outline-variant"></span>
+                                <span class="px-2 py-1 rounded border border-outline-variant font-semibold text-primary">Esc</span> abbrechen
+                            </div>
+                            <div class="mt-4 flex gap-2.5">
+                                <span class="px-3.5 py-1.5 rounded-full border border-outline-variant text-[12px] font-semibold text-primary">Hilfe</span>
+                                <span class="px-3.5 py-1.5 rounded-full border border-outline-variant text-[12px] font-semibold text-primary">Transkript</span>
+                            </div>
+                        </div>
+                        <!-- RECHTS · Sprachaktivität -->
+                        <aside class="sm:w-[30%] p-4 space-y-3 border-t sm:border-t-0 sm:border-l border-outline-variant">
+                            <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant">Sprachaktivität</div>
+                            <div class="rounded-lg bg-surface-container-lowest border border-outline-variant p-3.5 shadow-sm">
+                                <div class="text-[11px] font-bold uppercase tracking-wide text-primary mb-1.5">! Bestätigung erforderlich</div>
+                                <div class="text-[14px] font-semibold text-on-surface leading-tight">Diagnose · R51 Kopfschmerz</div>
+                                <div class="text-[12px] text-on-surface-variant mb-3">In die Akte übernehmen?</div>
+                                <div class="flex gap-2">
+                                    <span class="flex-1 text-center py-1.5 rounded bg-primary text-on-primary text-[12px] font-semibold">Bestätigen</span>
+                                    <span class="flex-1 text-center py-1.5 rounded border border-outline-variant text-primary text-[12px] font-semibold">Ablehnen</span>
+                                </div>
+                            </div>
+                            <div class="rounded-lg bg-surface-container-low border border-outline-variant p-3.5">
+                                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Verlauf</div>
+                                <div class="space-y-2">
+                                    <div class="text-[12px] leading-snug"><span class="text-on-surface-variant font-semibold">Arzt </span><span class="text-on-surface">…pochende Kopfschmerzen seit drei Tagen…</span></div>
+                                    <div class="text-[12px] leading-snug"><span class="text-on-surface-variant font-semibold">Docline </span><span class="text-on-surface">Diagnose-Vorschlag vorbereitet.</span></div>
+                                    <div class="flex items-start gap-2 text-[12px] leading-snug"><span class="mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-primary animate-pulse"></span><span class="text-on-surface italic">keine Aura, kein Fieber</span></div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elevated Statistics Section -->
+    <section id="vorteile" class="scroll-mt-24 py-20 bg-surface-container-low border-y border-outline-variant">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="text-headline-lg text-primary mb-4">Die Belastung in der Praxis wächst.</h2>
+                <p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Daten von über 21.000 niedergelassenen Ärzten zeigen das Ausmaß der administrativen Überlastung.</p>
+            </div>
+            <div class="animate-on-scroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card p-8 rounded-2xl text-center">
+                    <div class="text-headline-xl text-primary font-bold mb-1">53%</div>
+                    <p class="text-label-md text-on-surface-variant uppercase tracking-tighter mb-4">Admin-Zeit</p>
+                    <p class="text-body-sm text-on-surface">Ärzte verbringen mehr als die Hälfte ihrer Zeit mit Dokumentation.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl text-center border-t-4 border-t-secondary">
+                    <div class="text-headline-xl text-secondary font-bold mb-1">47%</div>
+                    <p class="text-label-md text-on-surface-variant uppercase tracking-tighter mb-4">Patienten-Zeit</p>
+                    <p class="text-body-sm text-on-surface">Weniger als die Hälfte bleibt für die eigentliche Behandlung.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl text-center">
+                    <div class="text-headline-xl text-primary font-bold mb-1">21k</div>
+                    <p class="text-label-md text-on-surface-variant uppercase tracking-tighter mb-4">Ärzte in AT</p>
+                    <p class="text-body-sm text-on-surface">Docline ist die Antwort auf den Overload im österreichischen System.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl text-center bg-primary text-on-primary border-none"><div class="flex flex-col items-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="material-symbols-outlined text-sm">verified_user</span>
+        Zertifiziert
+    </div>
+    <div class="text-headline-xl font-bold mb-1">100%</div>
+    <p class="text-label-md opacity-70 uppercase tracking-tighter mb-4">DSGVO KONFORM</p>
+    <p class="text-body-sm opacity-90 leading-relaxed">
+        On-Premise: Patientendaten bleiben in Ihrer Praxis. Ende-zu-Ende verschlüsselt, Serverstandort Österreich.
+    </p>
+</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Value Proposition / Buzzwords -->
+    <section class="scroll-mt-24 py-24" id="produkt">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="text-center mb-20">
+                <h2 class="text-headline-lg text-primary mb-4">Medizin. Vereinfacht.</h2>
+                <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Docline arbeitet für den Arzt, nicht umgekehrt. Unsere KI versteht den medizinischen Kontext in Echtzeit.
+                </p>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Feature 1: Sprachsteuerung -->
+                <div class="animate-on-scroll flex flex-col lg:flex-row items-stretch lg:items-center gap-12 group">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md mb-6">
+                            <span class="material-symbols-outlined text-sm">mic</span>
+                            ECHTZEIT-INPUT
+                        </div>
+                        <h3 class="text-headline-lg md:text-headline-xl mb-6">Sprachsteuerung</h3>
+                        <p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                            Docline hört im Hintergrund zu und transkribiert medizinische Fachterminologie mit höchster Präzision. 
+                            <span class="text-primary font-semibold">Kein manuelles Tippen mehr während der Untersuchung.</span> 
+                            Volle Konzentration auf den Patienten.
+                        </p>
+                        <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+                            <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                            <span class="text-body-sm italic font-medium">"Hört zu... Patient klagt über Kopfschmerz..."</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full order-first lg:order-last">
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-8 shadow-sm flex flex-col items-center">
+                            <div class="py-6">
+                                <div class="dl-orb dl-orb--listening" aria-hidden="true" style="--dl-orb-ring:rgba(20,22,28,0.30);--dl-orb-core:#16191f;--dl-orb-halo:rgba(10,10,10,0.06);width:150px;height:150px;">
+                                    <div class="dl-orb-halo"></div>
+                                    <div class="dl-orb-ring"></div>
+                                    <div class="dl-orb-ring-2"></div>
+                                    <div class="dl-orb-core" style="width:63px;height:63px;">
+                                        <div class="dl-orb-wave"><span></span><span></span><span></span><span></span><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wide text-primary">
+                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Hört zu
+                            </div>
+                            <div class="mt-4 w-full p-3 rounded-lg bg-surface-container-low border border-outline-variant">
+                                <p class="text-[13px] text-on-surface italic text-center">„Patientin klagt über Kopfschmerz…"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Agentische Workflows -->
+                <div class="animate-on-scroll flex flex-col lg:flex-row items-stretch lg:items-center gap-12">
+                    <div class="flex-1 w-full">
+                        <div class="bg-primary p-12 rounded-3xl text-on-primary shadow-2xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-8 opacity-10">
+                                <span class="material-symbols-outlined text-[120px]">neurology</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h3 class="text-headline-lg md:text-headline-xl mb-6">Agentische Workflows</h3>
+                                <p class="text-body-lg mb-10 opacity-90 leading-relaxed">
+                                    Docline automatisiert Ihre Dokumentation im Hintergrund: Es versteht den medizinischen Kontext, schlägt Kodierung und nächste Schritte vor und bereitet den Arztbrief vor. Jeder Schritt bleibt dabei vollständig auditierbar und ärztlich freigegeben.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-4 text-body-md bg-white/10 p-4 rounded-xl">
+                                        <span class="material-symbols-outlined text-secondary-fixed">task_alt</span>
+                                        ICD-10-Codierung als prüfbarer Vorschlag
+                                    </li>
+                                    <li class="flex items-center gap-4 text-body-md bg-white/10 p-4 rounded-xl">
+                                        <span class="material-symbols-outlined text-secondary-fixed">task_alt</span>
+                                        Kontextsensitive Vorschläge – Freigabe bleibt beim Arzt
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md mb-6">
+                            <span class="material-symbols-outlined text-sm">smart_toy</span>
+                            KI-INTELLIGENZ
+                        </div>
+                        <h3 class="text-headline-lg mb-6">Was uns besonders macht</h3>
+                        <p class="text-body-md text-on-surface-variant leading-relaxed">
+                            Docline hört mit, strukturiert das Gespräch und bereitet Diagnose-Kandidaten sowie einen Arztbrief-Entwurf vor – noch während der Konsultation. Übernommen wird nichts ohne Ihre Freigabe. So geben wir Ärzten ihre wertvollste Ressource zurück: Zeit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Arztbrief-Abgleich -->
+                <div class="animate-on-scroll flex flex-col lg:flex-row items-stretch lg:items-center gap-12">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md mb-6">
+                            <span class="material-symbols-outlined text-sm">verified</span>
+                            QUALITÄTSSICHERUNG
+                        </div>
+                        <h3 class="text-headline-lg md:text-headline-xl mb-6">Arztbrief-Abgleich</h3>
+                        <p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                            Docline prüft bestehende Befunde und gleicht sie automatisch mit der aktuellen Dokumentation ab. 
+                            <span class="text-primary font-semibold">Nachvollziehbar, konsistent und DSGVO-konform.</span>
+                        </p>
+                        <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-label-md font-bold uppercase">Bestätigungspflichtig</span>
+                                <span class="text-headline-md font-bold text-primary">100%</span>
+                            </div>
+                            <div class="w-full bg-outline-variant h-3 rounded-full overflow-hidden">
+                                <div class="bg-primary h-full w-full"></div>
+                            </div>
+                            <p class="text-body-sm text-on-surface-variant mt-3">Jede klinisch relevante KI-Aktion wird vor der Ausführung ärztlich freigegeben.</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full order-first lg:order-last">
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-8 shadow-sm">
+                            <span class="material-symbols-outlined text-4xl text-primary mb-6">description</span>
+                            <div class="space-y-4">
+                                <div class="h-4 bg-surface-dim rounded w-full"></div>
+                                <div class="h-4 bg-surface-dim rounded w-5/6"></div>
+                                <div class="h-4 bg-surface-dim rounded w-4/6"></div>
+                                <div class="flex gap-2 mt-6">
+                                    <div class="px-3 py-1 bg-secondary-fixed text-[10px] rounded">VORBEFUNDE MATCH</div>
+                                    <div class="px-3 py-1 bg-secondary-fixed text-[10px] rounded">ICD-10 VALIDIERT</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Der ganze Praxistag -->
+    <section id="funktionen" class="scroll-mt-24 py-24 bg-surface-container-low border-y border-outline-variant">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="animate-on-scroll max-w-2xl mx-auto text-center mb-16">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md mb-6">
+                    <span class="material-symbols-outlined text-sm">apps</span>
+                    ALLES AN EINEM ORT
+                </div>
+                <h2 class="text-headline-lg text-primary mb-4">Eine Software für den ganzen Praxistag</h2>
+                <p class="text-body-lg text-on-surface-variant">
+                    Docline automatisiert die Verwaltung rund um die Behandlung – von der Terminplanung bis zur Abrechnung. Jeder Schritt bleibt dabei nachvollziehbar protokolliert.
+                </p>
+            </div>
+            <div class="animate-on-scroll grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">calendar_month</span>
+                    <h3 class="text-headline-md text-primary mb-2">Termine &amp; Wartezimmer</h3>
+                    <p class="text-body-sm text-on-surface-variant">Kalender, Ressourcenplanung und Tagesüberblick im Heute-Workspace.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">folder_shared</span>
+                    <h3 class="text-headline-md text-primary mb-2">Patientenakte</h3>
+                    <p class="text-body-sm text-on-surface-variant">Longitudinale Akte mit Allergien, Vitalwerten, Diagnosen und Verlauf.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">clinical_notes</span>
+                    <h3 class="text-headline-md text-primary mb-2">Dokumentation</h3>
+                    <p class="text-body-sm text-on-surface-variant">Anamnese, Befund, Diagnose und Arztbrief – per Sprache automatisiert vorbereitet.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">prescriptions</span>
+                    <h3 class="text-headline-md text-primary mb-2">Verordnung</h3>
+                    <p class="text-body-sm text-on-surface-variant">Rezept, Krankmeldung und Überweisung inkl. Medikations-Sicherheitscheck.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">science</span>
+                    <h3 class="text-headline-md text-primary mb-2">Labor</h3>
+                    <p class="text-body-sm text-on-surface-variant">Befund-Upload mit automatischer Extraktion und Alert-Queue für kritische Werte.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">receipt_long</span>
+                    <h3 class="text-headline-md text-primary mb-2">Abrechnung</h3>
+                    <p class="text-body-sm text-on-surface-variant">Kassentarif und Wahlarzt-Honorarnote – auf das österreichische System zugeschnitten.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">forum</span>
+                    <h3 class="text-headline-md text-primary mb-2">Kommunikation</h3>
+                    <p class="text-body-sm text-on-surface-variant">Interne und patientenbezogene Nachrichten an einem zentralen Ort.</p>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-3xl text-primary">health_and_safety</span>
+                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container-high text-[10px] font-bold uppercase tracking-wide text-on-surface-variant">Bald</span>
+                    </div>
+                    <h3 class="text-headline-md text-primary mb-2">e-card &amp; ELGA</h3>
+                    <p class="text-body-sm text-on-surface-variant">Anbindung an e-card und ELGA (SVC) – als Nächstes in Umsetzung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sicherheit & Kontrolle -->
+    <section id="sicherheit" class="scroll-mt-24 py-24 border-t border-outline-variant">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="animate-on-scroll max-w-2xl mx-auto text-center mb-16">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md mb-6">
+                    <span class="material-symbols-outlined text-sm">shield</span>
+                    SICHERHEIT & KONTROLLE
+                </div>
+                <h2 class="text-headline-lg text-primary mb-4">Die KI schlägt vor. Sie entscheiden.</h2>
+                <p class="text-body-lg text-on-surface-variant">
+                    Docline führt keine klinisch relevante Aktion ohne ärztliche Freigabe aus. Jeder Schritt ist vorher sichtbar, nachvollziehbar und umkehrbar.
+                </p>
+            </div>
+            <div class="animate-on-scroll grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card p-8 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">preview</span>
+                    <h3 class="text-headline-md text-primary mb-2">Vorschau vor Ausführung</h3>
+                    <p class="text-body-sm text-on-surface-variant">Vorschau → Freigabe → Ausführung. Nichts wird ungefragt in die Akte geschrieben.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">history</span>
+                    <h3 class="text-headline-md text-primary mb-2">Lückenloser Audit-Trail</h3>
+                    <p class="text-body-sm text-on-surface-variant">Jede manuelle und KI-Aktion wird mit Quelle und Modell-Metadaten protokolliert.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">undo</span>
+                    <h3 class="text-headline-md text-primary mb-2">Umkehrbar</h3>
+                    <p class="text-body-sm text-on-surface-variant">Jede bestätigte Aktion bleibt nachvollziehbar und lässt sich rückgängig machen.</p>
+                </div>
+                <div class="stat-card p-8 rounded-2xl">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-4">keyboard</span>
+                    <h3 class="text-headline-md text-primary mb-2">Manueller Fallback</h3>
+                    <p class="text-body-sm text-on-surface-variant">Jeder assistierte Weg hat eine verlässliche Route – ganz ohne Sprache und KI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Final CTA -->
+    <section id="kontakt" class="scroll-mt-24 py-24 docline-monochrome text-on-primary">
+        <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="animate-on-scroll max-w-4xl mx-auto text-center">
+                <h2 class="text-headline-lg md:text-headline-xl mb-8">Bereit für den digitalen Sprung?</h2>
+                <p class="text-body-lg opacity-90 mb-12">
+                    Docline startet mit ausgewählten Pilotpraxen in Österreich. Sichern Sie sich frühzeitig Ihren Zugang – und gestalten Sie die Praxissoftware von morgen mit.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="px-10 py-5 bg-surface-container-lowest text-primary rounded-xl font-label-md hover:bg-surface-container-low transition-colors shadow-xl">
+                        Jetzt Kostenlos testen
+                    </button>
+                    <button class="px-10 py-5 border border-white/30 text-on-primary rounded-xl font-label-md hover:bg-white/10 transition-colors">
+                        Beratungstermin vereinbaren
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-gutter bg-surface-container-low border-t border-outline-variant">
+    <div class="flex flex-col justify-between space-y-8 md:space-y-0">
+        <div>
+            <div class="text-headline-md font-bold text-primary mb-2">Docline</div>
+            <p class="text-body-sm text-on-surface-variant">Medicine. Simplified.</p>
+        </div>
+        <div class="text-on-surface-variant font-body-sm">
+            © <span id="year">2026</span> Docline KI. Medicine. Simplified.
+        </div>
+    </div>
+    <div class="grid grid-cols-2 gap-8">
+        <div class="space-y-4">
+            <h4 class="text-label-md text-primary uppercase tracking-wider">Rechtliches</h4>
+            <nav class="flex flex-col space-y-2">
+                <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">Datenschutz</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">Impressum</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">AGB</a>
+            </nav>
+        </div>
+        <div class="space-y-4">
+            <h4 class="text-label-md text-primary uppercase tracking-wider">Support</h4>
+            <nav class="flex flex-col space-y-2">
+                <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">Kontakt</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">Hilfezentrum</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<script class="">
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Mobiles Menü öffnen/schließen
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuToggle && mobileMenu) {
+        const icon = menuToggle.querySelector('.material-symbols-outlined');
+        const setOpen = (open) => {
+            mobileMenu.classList.toggle('hidden', !open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+            if (icon) icon.textContent = open ? 'close' : 'menu';
+        };
+        menuToggle.addEventListener('click', () => setOpen(mobileMenu.classList.contains('hidden')));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    }
+
+    // Aktuelles Jahr im Footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
