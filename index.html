@@ -92,13 +92,13 @@
         },
       }
     }catch(_e){}</script>
-<title>Docline – Sprachgesteuerte KI-Dokumentation für Arztpraxen</title>
-<meta name="description" content="Docline ist der erste sprachgesteuerte KI-Assistent für Arztpraxen: Patientengespräche in Echtzeit dokumentieren, ICD-10-Codierung und Arztbrief-Abgleich – DSGVO-konform mit Serverstandort in Österreich.">
+<title>Docline – Voice-first Praxissoftware mit ärztlicher Freigabe</title>
+<meta name="description" content="Docline ist eine On-Premise-Praxissoftware für Österreich: Die KI hört mit, strukturiert das Gespräch und schlägt vor. Ausgeführt wird erst nach ärztlicher Freigabe – lückenlos protokolliert, FHIR-nativ.">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_AT">
-<meta property="og:title" content="Docline – KI-Dokumentation für Arztpraxen">
-<meta property="og:description" content="Ärzte behandeln. Docline erledigt den Rest. Sprachgesteuerte, DSGVO-konforme Dokumentation in Echtzeit.">
+<meta property="og:title" content="Docline – Voice-first Praxissoftware mit ärztlicher Freigabe">
+<meta property="og:description" content="Die KI schlägt vor. Sie entscheiden. Sprachgesteuerte Dokumentation mit Preview-, Freigabe- und Audit-Contract.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23000000'/><text x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='700' fill='%23ffffff' text-anchor='middle'>D</text></svg>">
 <script>document.documentElement.classList.add('js');</script>
@@ -111,7 +111,7 @@
   html,body{overflow-x:hidden;}
   body{-webkit-font-smoothing:antialiased;}
 
-  /* ============ Scroll-Reveal (gestaffelt, Xtract-Prinzip) ============ */
+  /* ============ Scroll-Reveal (gestaffelt) ============ */
   /* Nutzt bewusst die eigenständigen Properties translate/scale statt transform,
      damit Hover-Effekte (.card:hover, .btn:hover) auf denselben Elementen
      nicht von der spezifischeren .is-visible-Regel überschrieben werden. */
@@ -129,7 +129,7 @@
   .js [data-reveal="right"]{translate:36px 0;}
   .js [data-reveal].is-visible{opacity:1;translate:none;scale:none;filter:none;}
 
-  /* ============ Navigation · schwebende Pill mit Glas-Blur ============ */
+  /* ============ Navigation ============ */
   .nav-pill{
     transition:background .45s var(--ease), box-shadow .45s var(--ease),
                border-color .45s var(--ease), border-radius .35s var(--ease);
@@ -138,17 +138,16 @@
     border-radius:9999px;
     box-shadow:none;
   }
-  /* Bei offenem Mobilmenü wird aus der Pille eine Karte */
+  .nav-pill.is-scrolled{
+    background:rgba(255,255,255,.85);
+    border-color:var(--line);
+    box-shadow:0 1px 2px rgba(16,16,20,.04), 0 18px 40px -22px rgba(16,16,20,.35);
+  }
   .nav-pill.is-menu-open{
     border-radius:28px;
     background:rgba(255,255,255,.92);
     border-color:var(--line);
     box-shadow:0 24px 48px -24px rgba(16,16,20,.4);
-  }
-  .nav-pill.is-scrolled{
-    background:rgba(255,255,255,.85);
-    border-color:var(--line);
-    box-shadow:0 1px 2px rgba(16,16,20,.04), 0 18px 40px -22px rgba(16,16,20,.35);
   }
   .nav-link{position:relative;}
   .nav-link::after{
@@ -172,7 +171,7 @@
   }
   .mobile-menu__inner{overflow:hidden;min-height:0;}
 
-  /* ============ Hintergründe · Grid-Pattern + Radial-Glow ============ */
+  /* ============ Hintergründe ============ */
   .bg-grid{
     position:absolute;inset:0;pointer-events:none;
     background-image:
@@ -187,7 +186,7 @@
     background:radial-gradient(circle, rgba(16,16,20,.10) 0%, rgba(16,16,20,0) 70%);
   }
 
-  /* ============ Karten · Hover-Lift + Cursor-Spotlight ============ */
+  /* ============ Karten ============ */
   .card{
     position:relative;isolation:isolate;overflow:hidden;
     border:1px solid var(--line);
@@ -206,13 +205,13 @@
     box-shadow:0 2px 4px rgba(16,16,20,.04), 0 28px 52px -26px rgba(16,16,20,.34);
   }
   .card:hover::after{opacity:1;}
+  .card--static:hover{transform:none;}
   .card--dark{
     background:radial-gradient(120% 130% at 50% -20%, #2f3038 0%, #16171d 50%, #000000 100%);
     border-color:rgba(255,255,255,.10);
   }
   .card--dark::after{background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%), rgba(255,255,255,.10), transparent 62%);}
 
-  /* Icon-Kachel in Karten */
   .icon-tile{
     display:grid;place-items:center;width:46px;height:46px;border-radius:12px;
     border:1px solid var(--line);
@@ -222,7 +221,7 @@
   }
   .card:hover .icon-tile{transform:translateY(-2px) scale(1.06);background:#000;color:#fff;}
 
-  /* ============ Badge-Pill (Section-Header-Muster) ============ */
+  /* ============ Badge-Pill ============ */
   .pill{
     display:inline-flex;align-items:center;gap:8px;
     padding:6px 14px 6px 10px;border-radius:9999px;
@@ -247,7 +246,7 @@
   .btn-ghost{background:#fff;color:#000;border:1px solid var(--line);}
   .btn-ghost:hover{border-color:var(--line-strong);box-shadow:0 12px 28px -18px rgba(16,16,20,.45);}
 
-  /* ============ Marquee · Endlos-Band ============ */
+  /* ============ Marquee ============ */
   .marquee{
     display:flex;overflow:hidden;user-select:none;gap:0;
     -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);
@@ -265,7 +264,99 @@
     font-size:15px;font-weight:600;color:#4c4546;letter-spacing:-.01em;
   }
 
-  /* ============ Prozess-Timeline mit Fortschrittsschiene ============ */
+  /* ============ Konsultations-Loop (Hero-Visual) ============ */
+  .loop{border-radius:24px;overflow:hidden;}
+  .loop__bar{
+    display:flex;align-items:center;gap:10px;height:46px;padding:0 18px;
+    border-bottom:1px solid var(--line);background:#f7f8fa;
+  }
+  .loop__rec{width:8px;height:8px;border-radius:9999px;background:#000;}
+  .loop__title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4c4546;}
+  .loop__time{margin-left:auto;font-size:12px;font-weight:600;color:#4c4546;font-variant-numeric:tabular-nums;}
+  .loop__body{padding:24px 22px;display:flex;flex-direction:column;gap:18px;}
+  @media (min-width:768px){.loop__body{padding:30px 30px;gap:20px;}}
+
+  /* Die Schrittnamen stehen von Beginn an da – gedimmt – damit die Karte sofort
+     als vierstufige Pipeline lesbar ist und keine leere Fläche zeigt. */
+  .loop__label{
+    display:flex;align-items:center;gap:8px;
+    font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#4c4546;margin-bottom:10px;
+    opacity:.3;transition:opacity .6s var(--ease);
+  }
+  .loop__stage.on .loop__label{opacity:1;}
+  .loop__content{
+    opacity:0;translate:0 12px;
+    transition:opacity .65s var(--ease), translate .65s var(--ease);
+  }
+  .loop__stage.on .loop__content{opacity:1;translate:none;}
+  .loop__stage:not(.on) .wave span{animation-play-state:paused;}
+  .loop__transcript{
+    font-size:17px;line-height:28px;color:#1a1b22;font-weight:500;
+    min-height:56px;
+  }
+  @media (min-width:768px){.loop__transcript{font-size:19px;line-height:30px;min-height:60px;}}
+  .caret{
+    display:inline-block;width:2px;height:19px;background:#000;margin-left:2px;
+    vertical-align:-3px;animation:caret-blink 1s step-end infinite;
+  }
+  @keyframes caret-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+  .wave{display:inline-flex;align-items:center;gap:3px;height:16px;}
+  .wave span{width:3px;border-radius:99px;background:#000;animation:wv 1s ease-in-out infinite;}
+  .wave span:nth-child(1){height:35%;}
+  .wave span:nth-child(2){height:70%;animation-delay:-.2s;}
+  .wave span:nth-child(3){height:100%;animation-delay:-.4s;}
+  .wave span:nth-child(4){height:55%;animation-delay:-.3s;}
+  .wave span:nth-child(5){height:28%;animation-delay:-.1s;}
+  @keyframes wv{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1.1);}}
+
+  .loop__chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .loop__chips .chip{
+    padding:7px 13px;border-radius:9999px;border:1px solid var(--line);background:#fff;
+    font-size:13px;font-weight:600;color:#1a1b22;
+    opacity:0;translate:0 8px;
+    transition:opacity .5s var(--ease), translate .5s var(--ease);
+    transition-delay:calc(var(--i) * 130ms);
+  }
+  .loop__stage.on .chip{opacity:1;translate:none;}
+
+  .proposal{border:1px solid var(--line-strong);border-radius:16px;background:#fff;padding:16px;box-shadow:0 18px 40px -26px rgba(16,16,20,.5);}
+  .proposal__head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
+  .proposal__flag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#000;
+  }
+  .proposal__conf{
+    padding:3px 9px;border-radius:9999px;background:#eceef1;
+    font-size:11px;font-weight:700;color:#4c4546;letter-spacing:.03em;
+  }
+  .proposal__body{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .proposal__code{
+    padding:3px 8px;border-radius:6px;background:#1a1b22;color:#fff;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;font-weight:600;
+  }
+  .proposal__dx{font-size:16px;font-weight:600;color:#1a1b22;}
+  .proposal__actions{display:flex;gap:8px;}
+  .proposal__btn{
+    flex:1;text-align:center;padding:9px 0;border-radius:9px;
+    font-size:13px;font-weight:600;border:1px solid var(--line);color:#1a1b22;background:#fff;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .proposal__btn--primary{background:#000;color:#fff;border-color:#000;}
+  .proposal__btn--primary.is-pressed{transform:scale(.955);box-shadow:0 0 0 4px rgba(0,0,0,.10);}
+
+  .audit{
+    display:flex;align-items:flex-start;gap:12px;padding:14px 16px;
+    border:1px solid var(--line);border-radius:14px;background:#f7f8fa;
+  }
+  .audit__check{
+    flex-shrink:0;display:grid;place-items:center;width:24px;height:24px;border-radius:9999px;
+    background:#000;color:#fff;font-size:14px;font-weight:700;line-height:1;
+  }
+  .audit__title{font-size:14px;font-weight:700;color:#1a1b22;}
+  .audit__meta{font-size:12px;color:#4c4546;margin-top:2px;}
+
+  /* ============ Prozess-Timeline ============ */
   .rail{position:absolute;top:6px;bottom:6px;left:23px;width:2px;background:var(--line);border-radius:9999px;}
   .rail__fill{position:absolute;left:0;top:0;width:100%;height:var(--p,0%);background:#000;border-radius:9999px;transition:height .15s linear;}
   .step-num{
@@ -278,7 +369,23 @@
   }
   .step.is-active .step-num{background:#000;color:#fff;border-color:#000;transform:scale(1.06);}
 
-  /* ============ FAQ-Akkordeon ============ */
+  /* ============ Roadmap ============ */
+  .phase{position:relative;padding-left:0;}
+  .phase__dot{
+    width:12px;height:12px;border-radius:9999px;border:2px solid var(--line-strong);background:#fff;
+    flex-shrink:0;
+  }
+  .phase--done .phase__dot{background:#000;border-color:#000;}
+  .phase--now .phase__dot{background:#fff;border-color:#000;box-shadow:0 0 0 4px rgba(0,0,0,.10);}
+  .phase__tag{
+    display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:9999px;
+    font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    border:1px solid var(--line);background:#fff;color:#4c4546;
+  }
+  .phase--done .phase__tag{background:#000;color:#fff;border-color:#000;}
+  .phase--now .phase__tag{border-color:#000;color:#000;}
+
+  /* ============ FAQ ============ */
   .faq-item{border:1px solid var(--line);border-radius:16px;background:#fff;transition:border-color .4s var(--ease), box-shadow .4s var(--ease), background .4s;}
   .faq-item.is-open{border-color:var(--line-strong);box-shadow:0 20px 44px -28px rgba(16,16,20,.4);}
   .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;padding:22px 24px;cursor:pointer;}
@@ -290,15 +397,11 @@
   /* ============ Feine Bewegungen ============ */
   @keyframes float-y{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
   .float-slow{animation:float-y 7s ease-in-out infinite;}
-  .hover-tilt{transition:transform .6s var(--ease), box-shadow .6s var(--ease);}
-  .hover-tilt:hover{transform:translateY(-6px);}
   @keyframes ticker-blink{0%,100%{opacity:1;}50%{opacity:.25;}}
   .blink{animation:ticker-blink 1.8s ease-in-out infinite;}
-
-  /* Zahlen-Count-up: verhindert Layout-Sprung */
   .count{font-variant-numeric:tabular-nums;}
 
-  /* ============ Finale CTA-Fläche ============ */
+  /* ============ Finale CTA ============ */
   .docline-monochrome{background:radial-gradient(120% 130% at 50% -10%,#2f3038 0%,#16171d 48%,#000000 100%);}
   .cta-grid{
     position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -310,39 +413,14 @@
     mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 80%);
   }
 
-  /* ============ Voice Orb – 1:1 aus der App ============ */
-  .dl-orb{position:relative;display:grid;place-items:center;isolation:isolate;}
-  .dl-orb-halo,.dl-orb-ring{position:absolute;inset:0;border-radius:50%;}
-  .dl-orb-halo{inset:-30%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 50% 47%,color-mix(in oklab,var(--dl-orb-core) 44%,transparent) 0%,color-mix(in oklab,var(--dl-orb-core) 15%,transparent) 38%,transparent 68%);filter:blur(11px);opacity:.85;}
-  .dl-orb-ring{border:1px solid color-mix(in oklab,var(--dl-orb-ring) 92%,transparent);box-shadow:inset 0 0 16px -2px color-mix(in oklab,var(--dl-orb-core) 22%,transparent),0 0 0 .5px rgba(255,255,255,.55);}
-  .dl-orb-ring-2{position:absolute;inset:11%;border-radius:50%;border:1px solid color-mix(in oklab,var(--dl-orb-ring) 60%,transparent);opacity:.7;}
-  .dl-orb-core{position:relative;border-radius:50%;display:grid;place-items:center;color:#fff;background:radial-gradient(125% 125% at 32% 24%,color-mix(in oklab,var(--dl-orb-core) 50%,#ffffff) 0%,var(--dl-orb-core) 46%,color-mix(in oklab,var(--dl-orb-core) 76%,#000000) 100%);box-shadow:0 14px 32px -8px color-mix(in oklab,var(--dl-orb-core) 52%,transparent),0 3px 8px rgba(10,12,16,.22),inset 0 1.5px 1px rgba(255,255,255,.5),inset 0 -12px 22px -10px rgba(0,0,0,.5);}
-  .dl-orb-core::before{content:'';position:absolute;top:9%;left:15%;width:48%;height:36%;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.82),rgba(255,255,255,0) 72%);filter:blur(1.5px);opacity:.9;pointer-events:none;}
-  .dl-orb--idle .dl-orb-ring{animation:dl-ring-pulse 4.2s ease-in-out infinite;}
-  .dl-orb--idle .dl-orb-core{animation:dl-core-breath 4.2s ease-in-out infinite;}
-  .dl-orb--idle .dl-orb-halo{animation:dl-halo-breath 4.2s ease-in-out infinite;}
-  .dl-orb--listening .dl-orb-ring,.dl-orb--listening .dl-orb-ring-2{animation:dl-listen-ring 1.6s ease-out infinite;}
-  .dl-orb--listening .dl-orb-ring-2{animation-delay:-.8s;}
-  .dl-orb--listening .dl-orb-halo{opacity:1;}
-  .dl-orb-wave{display:flex;align-items:center;gap:2.5px;height:46%;}
-  .dl-orb-wave span{width:2.5px;border-radius:99px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.72));box-shadow:0 0 7px rgba(255,255,255,.4);animation:dl-owave 1s ease-in-out infinite;}
-  .dl-orb-wave span:nth-child(1){height:30%;}
-  .dl-orb-wave span:nth-child(2){height:60%;animation-delay:-.2s;}
-  .dl-orb-wave span:nth-child(3){height:80%;animation-delay:-.4s;}
-  .dl-orb-wave span:nth-child(4){height:50%;animation-delay:-.3s;}
-  .dl-orb-wave span:nth-child(5){height:25%;animation-delay:-.1s;}
-  @keyframes dl-owave{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1.1);}}
-  @keyframes dl-ring-pulse{0%,100%{transform:scale(1);opacity:.65;}50%{transform:scale(1.045);opacity:1;}}
-  @keyframes dl-core-breath{0%,100%{transform:scale(1);}50%{transform:scale(1.045);}}
-  @keyframes dl-halo-breath{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:.95;transform:scale(1.07);}}
-  @keyframes dl-listen-ring{0%{transform:scale(.9);opacity:.95;}100%{transform:scale(1.24);opacity:0;}}
-
-  /* ============ Reduzierte Bewegung respektieren ============ */
+  /* ============ Reduzierte Bewegung ============ */
   @media (prefers-reduced-motion:reduce){
     .js [data-reveal]{opacity:1!important;translate:none!important;scale:none!important;filter:none!important;transition:none!important;}
-    .card,.card:hover,.icon-tile,.btn,.btn:hover,.hover-tilt,.hover-tilt:hover{transform:none!important;transition:none!important;}
-    .marquee__track,.float-slow,.blink{animation:none!important;}
-    .dl-orb-ring,.dl-orb-ring-2,.dl-orb-core,.dl-orb-halo,.dl-orb-wave span{animation:none!important;}
+    .card,.card:hover,.icon-tile,.btn,.btn:hover{transform:none!important;transition:none!important;}
+    .marquee__track,.float-slow,.blink,.wave span,.caret{animation:none!important;}
+    .caret{display:none;}
+    .loop__label,.loop__content{opacity:1!important;translate:none!important;transition:none!important;}
+    .loop__chips .chip{opacity:1!important;translate:none!important;transition:none!important;}
     .faq-a{transition:none!important;}
   }
 </style>
@@ -354,18 +432,19 @@
     <div class="flex justify-between items-center pl-6 pr-3 h-16">
       <a href="#" class="text-headline-md font-bold text-primary tracking-tight">Docline</a>
 
-      <div class="hidden lg:flex items-center gap-9">
-        <a class="nav-link is-active text-body-sm font-semibold text-primary transition-colors" href="#produkt">Produkt</a>
-        <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#ablauf">Ablauf</a>
-        <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#funktionen">Funktionen</a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a class="nav-link is-active text-body-sm font-semibold text-primary transition-colors" href="#ablauf">Ablauf</a>
         <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#sicherheit">Sicherheit</a>
+        <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#datenhoheit">Datenhoheit</a>
+        <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#module">Module</a>
+        <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#status">Status</a>
         <a class="nav-link text-body-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#faq">FAQ</a>
       </div>
 
       <div class="flex items-center gap-2">
         <button type="button" class="btn hidden sm:inline-flex px-5 py-2.5 rounded-full text-label-md text-on-surface-variant hover:text-primary">Login</button>
         <button type="button" class="btn btn-primary hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-label-md">
-          Kostenlos testen
+          Pilotpraxis werden
           <span class="btn-arrow material-symbols-outlined text-base">arrow_forward</span>
         </button>
         <button id="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-outline-variant text-primary hover:bg-surface-container transition-colors">
@@ -377,14 +456,15 @@
     <div id="mobile-menu" class="mobile-menu lg:hidden">
       <div class="mobile-menu__inner">
         <div class="flex flex-col border-t border-outline-variant px-5 py-4">
-          <a class="py-3 text-body-md font-semibold text-primary" href="#produkt">Produkt</a>
-          <a class="py-3 text-body-md text-on-surface-variant" href="#ablauf">Ablauf</a>
-          <a class="py-3 text-body-md text-on-surface-variant" href="#funktionen">Funktionen</a>
+          <a class="py-3 text-body-md font-semibold text-primary" href="#ablauf">Ablauf</a>
           <a class="py-3 text-body-md text-on-surface-variant" href="#sicherheit">Sicherheit</a>
+          <a class="py-3 text-body-md text-on-surface-variant" href="#datenhoheit">Datenhoheit</a>
+          <a class="py-3 text-body-md text-on-surface-variant" href="#module">Module</a>
+          <a class="py-3 text-body-md text-on-surface-variant" href="#status">Status</a>
           <a class="py-3 text-body-md text-on-surface-variant" href="#faq">FAQ</a>
           <div class="flex flex-col gap-2 mt-4">
             <button type="button" class="px-6 py-3 rounded-full text-label-md border border-outline-variant text-primary">Login</button>
-            <button type="button" class="px-6 py-3 rounded-full text-label-md bg-primary text-on-primary">Kostenlos testen</button>
+            <button type="button" class="px-6 py-3 rounded-full text-label-md bg-primary text-on-primary">Pilotpraxis werden</button>
           </div>
         </div>
       </div>
@@ -399,156 +479,171 @@
     <div class="bg-glow w-[720px] h-[520px] -top-40 left-1/2 -translate-x-1/2" aria-hidden="true"></div>
 
     <div class="relative container mx-auto px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-3xl mx-auto text-center mb-14 md:mb-20">
-        <span class="pill mb-8" data-reveal="up"><span class="pill-dot"></span>Die Zukunft der Dokumentation</span>
+      <!-- Zweispaltig erst ab xl: darunter ist die linke Spalte zu schmal für die
+           Headline-Zeile, deshalb dort gestapelt und zentriert. -->
+      <div class="grid grid-cols-1 xl:grid-cols-[1fr_minmax(0,520px)] gap-14 xl:gap-16 items-center">
 
-        <h1 class="text-headline-lg md:text-[64px] md:leading-[70px] md:tracking-[-.03em] font-bold text-primary mb-6">
-          <span class="block" data-reveal="blur" style="--d:80ms">Ärzte behandeln.</span>
-          <span class="block text-secondary" data-reveal="blur" style="--d:200ms">Docline erledigt den Rest.</span>
-        </h1>
+        <!-- Text -->
+        <div class="max-w-2xl mx-auto xl:mx-0 text-center xl:text-left">
+          <span class="pill mb-7" data-reveal="up"><span class="pill-dot"></span>Voice-first Praxissoftware</span>
 
-        <p class="text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto" data-reveal="up" style="--d:320ms">
-          Die sprachgesteuerte Praxissoftware, die im Hintergrund mitdokumentiert – von der Anamnese bis zum Arztbrief. Jede klinische KI-Aktion schlägt Docline vor, die Freigabe bleibt bei Ihnen.
-        </p>
+          <h1 class="text-headline-lg md:text-[52px] md:leading-[58px] md:tracking-[-.03em] font-bold text-primary mb-6">
+            <span class="block" data-reveal="blur" style="--d:80ms">Ärzte behandeln.</span>
+            <span class="block text-secondary" data-reveal="blur" style="--d:200ms">Docline erledigt den Rest.</span>
+          </h1>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10" data-reveal="up" style="--d:420ms">
-          <button class="btn btn-primary px-8 py-4 rounded-full font-label-md flex items-center justify-center gap-2">
-            Jetzt Demo anfordern
-            <span class="btn-arrow material-symbols-outlined text-lg">arrow_forward</span>
-          </button>
-          <button class="btn btn-ghost px-8 py-4 rounded-full font-label-md">
-            Funktionsweise entdecken
-          </button>
-        </div>
+          <p class="text-body-lg text-on-surface-variant mb-8" data-reveal="up" style="--d:320ms">
+            Docline hört während der Konsultation mit, strukturiert das Gespräch und bereitet Diagnose, Kodierung und Arztbrief vor. Ausgeführt wird nichts, bevor Sie es freigegeben haben.
+          </p>
 
-        <!-- Trust-Zeile -->
-        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-body-sm text-on-surface-variant" data-reveal="up" style="--d:520ms">
-          <span class="inline-flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary blink"></span>
-            Pilotphase für Praxen in Österreich
-          </span>
-          <span class="hidden sm:inline w-px h-4 bg-outline-variant"></span>
-          <span class="inline-flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-base">verified_user</span>
-            DSGVO-konform · Serverstandort Österreich
-          </span>
-        </div>
-      </div>
-
-      <!-- Produkt-Mockup -->
-      <div class="max-w-6xl mx-auto" data-reveal="scale" style="--d:120ms">
-        <div class="float-slow bg-surface-container-lowest border border-outline-variant rounded-[24px] overflow-hidden shadow-[0_40px_90px_-40px_rgba(16,16,20,.45)]" role="img" aria-label="Docline Voice-Mode: dreispaltige Ansicht mit Patientenkontext links, zentralem Voice Orb und Sprachaktivität rechts inklusive bestätigungspflichtigem KI-Vorschlag">
-          <div class="flex items-center gap-2 px-5 h-11 border-b border-outline-variant bg-surface-container-low">
-            <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
-            <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
-            <span class="w-3 h-3 rounded-full bg-outline-variant"></span>
-            <span class="ml-3 text-[12px] font-bold uppercase tracking-wide text-on-surface-variant">Docline · Voice Mode</span>
+          <div class="flex flex-col sm:flex-row gap-3 mb-9 justify-center xl:justify-start" data-reveal="up" style="--d:420ms">
+            <button class="btn btn-primary px-8 py-4 rounded-full font-label-md flex items-center justify-center gap-2">
+              Pilotpraxis werden
+              <span class="btn-arrow material-symbols-outlined text-lg">arrow_forward</span>
+            </button>
+            <button class="btn btn-ghost px-8 py-4 rounded-full font-label-md">
+              So funktioniert es
+            </button>
           </div>
-          <div class="flex flex-col sm:flex-row sm:min-h-[520px]">
-            <aside class="sm:w-[30%] p-4 space-y-3 border-b sm:border-b-0 sm:border-r border-outline-variant bg-surface-container-low">
-              <div class="rounded-xl bg-surface-container-lowest border border-outline-variant p-3.5">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-9 h-9 rounded-full bg-primary text-on-primary grid place-items-center text-[12px] font-bold">MB</div>
-                  <div class="min-w-0">
-                    <div class="text-[15px] font-semibold text-primary leading-tight truncate">Maria Bauer</div>
-                    <div class="text-[12px] text-on-surface-variant truncate">54 J. · e-card</div>
-                  </div>
-                </div>
-                <div class="mt-2.5 flex flex-wrap gap-1.5">
-                  <span class="px-2 py-0.5 rounded bg-secondary-fixed text-[11px] font-semibold">Akte aktiv</span>
-                  <span class="px-2 py-0.5 rounded bg-secondary-fixed text-[11px] font-semibold">Dauerdiagnose</span>
-                </div>
-              </div>
-              <div class="rounded-xl bg-surface-container-lowest border border-outline-variant p-3.5">
-                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Dauerdiagnosen</div>
-                <div class="space-y-1.5">
-                  <div class="flex items-center gap-2 text-[13px]"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-[11px] font-mono">I10</span><span class="text-on-surface truncate">Hypertonie</span></div>
-                  <div class="flex items-center gap-2 text-[13px]"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-[11px] font-mono">E11</span><span class="text-on-surface truncate">Diabetes mellitus II</span></div>
-                </div>
-              </div>
-              <div class="rounded-xl bg-surface-container-lowest border border-outline-variant p-3.5">
-                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Cave</div>
-                <div class="flex items-center gap-2 text-[13px]"><span class="w-4 h-4 grid place-items-center rounded bg-primary text-on-primary text-[11px] font-bold">!</span><span class="text-on-surface truncate">Penicillin-Allergie</span></div>
-              </div>
-            </aside>
 
-            <div class="flex-1 flex flex-col items-center justify-center py-12 px-4">
-              <div class="dl-orb dl-orb--listening" aria-hidden="true" style="--dl-orb-ring:rgba(20,22,28,0.30);--dl-orb-core:#16191f;--dl-orb-halo:rgba(10,10,10,0.06);width:200px;height:200px;">
-                <div class="dl-orb-halo"></div>
-                <div class="dl-orb-ring"></div>
-                <div class="dl-orb-ring-2"></div>
-                <div class="dl-orb-core" style="width:84px;height:84px;">
-                  <div class="dl-orb-wave"><span></span><span></span><span></span><span></span><span></span></div>
-                </div>
-              </div>
-              <div class="mt-7 flex items-center gap-2 text-[12px] text-on-surface-variant">
-                <span class="px-2 py-1 rounded border border-outline-variant font-semibold text-primary">Space</span> start / stop
-                <span class="mx-1 w-px h-4 bg-outline-variant"></span>
-                <span class="px-2 py-1 rounded border border-outline-variant font-semibold text-primary">Esc</span> abbrechen
-              </div>
-              <div class="mt-4 flex gap-2.5">
-                <span class="px-3.5 py-1.5 rounded-full border border-outline-variant text-[12px] font-semibold text-primary">Hilfe</span>
-                <span class="px-3.5 py-1.5 rounded-full border border-outline-variant text-[12px] font-semibold text-primary">Transkript</span>
-              </div>
+          <!-- Trust-Zeile -->
+          <div class="flex flex-col gap-2.5 text-body-sm text-on-surface-variant items-center xl:items-start" data-reveal="up" style="--d:520ms">
+            <span class="inline-flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">dns</span>
+              On-Premise-Betrieb – läuft auf Ihrer Praxis-Hardware
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">graphic_eq</span>
+              Spracherkennung läuft lokal – Audio verlässt die Praxis nicht
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">how_to_reg</span>
+              Klinische Schreibaktionen sind ausnahmslos bestätigungspflichtig
+            </span>
+          </div>
+        </div>
+
+        <!-- Animierter Konsultations-Loop -->
+        <div data-reveal="scale" style="--d:200ms">
+          <div class="loop card card--static" id="consult-loop" aria-hidden="true">
+            <div class="loop__bar">
+              <span class="loop__rec blink"></span>
+              <span class="loop__title">Konsultation</span>
+              <span class="loop__time" id="loop-time">00:00</span>
             </div>
 
-            <aside class="sm:w-[30%] p-4 space-y-3 border-t sm:border-t-0 sm:border-l border-outline-variant">
-              <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant">Sprachaktivität</div>
-              <div class="rounded-xl bg-surface-container-lowest border border-outline-variant p-3.5 shadow-sm">
-                <div class="text-[11px] font-bold uppercase tracking-wide text-primary mb-1.5">! Bestätigung erforderlich</div>
-                <div class="text-[14px] font-semibold text-on-surface leading-tight">Diagnose · R51 Kopfschmerz</div>
-                <div class="text-[12px] text-on-surface-variant mb-3">In die Akte übernehmen?</div>
-                <div class="flex gap-2">
-                  <span class="flex-1 text-center py-1.5 rounded bg-primary text-on-primary text-[12px] font-semibold">Bestätigen</span>
-                  <span class="flex-1 text-center py-1.5 rounded border border-outline-variant text-primary text-[12px] font-semibold">Ablehnen</span>
+            <div class="loop__body">
+              <!-- 1 · Zuhören -->
+              <div class="loop__stage" data-stage="1">
+                <p class="loop__label">
+                  <span class="wave"><span></span><span></span><span></span><span></span><span></span></span>
+                  01 · Hört mit
+                </p>
+                <div class="loop__content">
+                  <p class="loop__transcript"><span id="loop-text"></span><span class="caret" id="loop-caret"></span></p>
                 </div>
               </div>
-              <div class="rounded-xl bg-surface-container-low border border-outline-variant p-3.5">
-                <div class="text-[11px] font-bold uppercase tracking-wide text-on-surface-variant mb-2">Verlauf</div>
-                <div class="space-y-2">
-                  <div class="text-[12px] leading-snug"><span class="text-on-surface-variant font-semibold">Arzt </span><span class="text-on-surface">…pochende Kopfschmerzen seit drei Tagen…</span></div>
-                  <div class="text-[12px] leading-snug"><span class="text-on-surface-variant font-semibold">Docline </span><span class="text-on-surface">Diagnose-Vorschlag vorbereitet.</span></div>
-                  <div class="flex items-start gap-2 text-[12px] leading-snug"><span class="mt-1.5 w-1.5 h-1.5 shrink-0 rounded-full bg-primary animate-pulse"></span><span class="text-on-surface italic">keine Aura, kein Fieber</span></div>
+
+              <!-- 2 · Strukturieren -->
+              <div class="loop__stage" data-stage="2">
+                <p class="loop__label">02 · Strukturiert</p>
+                <div class="loop__content">
+                  <div class="loop__chips">
+                    <span class="chip" style="--i:0">Anamnese</span>
+                    <span class="chip" style="--i:1">Befund</span>
+                    <span class="chip" style="--i:2">Diagnose-Kandidat</span>
+                    <span class="chip" style="--i:3">ICD-10</span>
+                  </div>
                 </div>
               </div>
-            </aside>
+
+              <!-- 3 · Vorschlag -->
+              <div class="loop__stage" data-stage="3">
+                <p class="loop__label">03 · Schlägt vor</p>
+                <div class="loop__content">
+                  <div class="proposal">
+                    <div class="proposal__head">
+                      <span class="proposal__flag">
+                        <span class="material-symbols-outlined text-sm">pending_actions</span>
+                        Freigabe erforderlich
+                      </span>
+                      <span class="proposal__conf">Konfidenz hoch</span>
+                    </div>
+                    <div class="proposal__body">
+                      <span class="proposal__code">R51</span>
+                      <span class="proposal__dx">Kopfschmerz</span>
+                    </div>
+                    <div class="proposal__actions">
+                      <span class="proposal__btn proposal__btn--primary" id="loop-confirm">Bestätigen</span>
+                      <span class="proposal__btn">Ablehnen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 · Protokolliert -->
+              <div class="loop__stage" data-stage="4">
+                <p class="loop__label">04 · Freigegeben</p>
+                <div class="loop__content">
+                  <div class="audit">
+                    <span class="audit__check">✓</span>
+                    <div>
+                      <div class="audit__title">In die Akte übernommen</div>
+                      <div class="audit__meta">Ärztlich freigegeben · im Audit-Trail protokolliert · umkehrbar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <p class="sr-only">
+            Ablaufdarstellung: Docline hört während der Konsultation mit und transkribiert den Satz
+            „…pochende Kopfschmerzen seit drei Tagen, keine Aura, kein Fieber.“ Daraus strukturiert
+            Docline Anamnese, Befund, Diagnose-Kandidat und ICD-10-Code und legt den Vorschlag
+            „R51 Kopfschmerz“ zur ärztlichen Freigabe vor. Erst nach Bestätigung wird der Eintrag in
+            die Akte übernommen und im Audit-Trail protokolliert.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================= MARQUEE-BAND ============================= -->
+  <!-- ============================= MARQUEE ============================= -->
   <section class="py-8 border-y border-outline-variant bg-surface-container-low overflow-hidden">
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track" id="marquee-track">
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">shield_lock</span>DSGVO-konform</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">location_on</span>Serverstandort Österreich</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">tag</span>ICD-10-Codierung</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">dns</span>On-Premise möglich</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">lock</span>Ende-zu-Ende verschlüsselt</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">dns</span>On-Premise-Betrieb</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">graphic_eq</span>Lokale Spracherkennung</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">how_to_reg</span>Preview → Freigabe → Ausführung</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">database</span>FHIR R4 nativ</span>
         <span class="marquee__item"><span class="material-symbols-outlined text-lg">history</span>Lückenloser Audit-Trail</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">credit_card</span>Kassentarif &amp; Wahlarzt</span>
-        <span class="marquee__item"><span class="material-symbols-outlined text-lg">health_and_safety</span>e-card &amp; ELGA in Umsetzung</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">wifi_off</span>Offline-fähige Kernprozesse</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">keyboard</span>Manueller Pfad immer verfügbar</span>
+        <span class="marquee__item"><span class="material-symbols-outlined text-lg">flag</span>Österreich-First-Roadmap</span>
       </div>
     </div>
-    <p class="sr-only">Docline ist DSGVO-konform, betreibt Server in Österreich, unterstützt ICD-10-Codierung, On-Premise-Betrieb, Ende-zu-Ende-Verschlüsselung, einen lückenlosen Audit-Trail sowie Kassentarif- und Wahlarzt-Abrechnung. e-card- und ELGA-Anbindung ist in Umsetzung.</p>
+    <p class="sr-only">Docline setzt auf On-Premise-Betrieb, lokale Spracherkennung, einen Preview-Freigabe-Ausführung-Ablauf, FHIR-R4-native Speicherung, einen lückenlosen Audit-Trail, offline-fähige Kernprozesse, einen jederzeit verfügbaren manuellen Pfad und eine Österreich-First-Roadmap.</p>
   </section>
 
-  <!-- ============================= STATISTIK ============================= -->
-  <section id="vorteile" class="scroll-mt-28 py-24 bg-surface">
+  <!-- ============================= PROBLEM ============================= -->
+  <section class="py-24 bg-surface">
     <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="max-w-2xl mx-auto text-center mb-16">
         <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Der Status quo</span>
-        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Die Belastung in der Praxis wächst.</h2>
-        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">Daten von über 21.000 niedergelassenen Ärzten zeigen das Ausmaß der administrativen Überlastung.</p>
+        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Die Dokumentation frisst die Sprechstunde.</h2>
+        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
+          Nicht die Medizin ist das Nadelöhr, sondern alles, was daneben mitgeschrieben werden muss.
+        </p>
       </div>
 
+      <!-- TODO: 53 % / 47 % brauchen eine belastbare Quellenangabe (Studie + Jahr),
+           sonst als Claim auf einer Medizinprodukt-nahen Seite angreifbar. -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" data-stagger>
         <div class="card p-8 rounded-[20px] text-center" data-reveal="up">
           <div class="text-headline-xl text-primary font-bold mb-1 count" data-count="53" data-suffix="%">0%</div>
           <p class="text-label-md text-on-surface-variant uppercase mb-4">Admin-Zeit</p>
-          <p class="text-body-sm text-on-surface">Ärzte verbringen mehr als die Hälfte ihrer Zeit mit Dokumentation.</p>
+          <p class="text-body-sm text-on-surface">Mehr als die Hälfte des Arbeitstags geht für Dokumentation und Verwaltung weg.</p>
         </div>
         <div class="card p-8 rounded-[20px] text-center" data-reveal="up">
           <div class="text-headline-xl text-secondary font-bold mb-1 count" data-count="47" data-suffix="%">0%</div>
@@ -557,153 +652,42 @@
         </div>
         <div class="card p-8 rounded-[20px] text-center" data-reveal="up">
           <div class="text-headline-xl text-primary font-bold mb-1 count" data-count="21" data-suffix="k">0k</div>
-          <p class="text-label-md text-on-surface-variant uppercase mb-4">Ärzte in AT</p>
-          <p class="text-body-sm text-on-surface">Docline ist die Antwort auf den Overload im österreichischen System.</p>
+          <p class="text-label-md text-on-surface-variant uppercase mb-4">Ärzte in Österreich</p>
+          <p class="text-body-sm text-on-surface">Niedergelassene Ärztinnen und Ärzte – der Markt, für den Docline zuerst gebaut wird.</p>
         </div>
         <div class="card card--dark p-8 rounded-[20px] text-center text-on-primary" data-reveal="up">
           <div class="flex flex-col items-center">
-            <span class="pill pill--dark mb-4 text-[10px]"><span class="material-symbols-outlined text-sm">verified_user</span>Zertifiziert</span>
+            <span class="pill pill--dark mb-4 text-[10px]"><span class="material-symbols-outlined text-sm">how_to_reg</span>Produktgarantie</span>
             <div class="text-headline-xl font-bold mb-1 count" data-count="100" data-suffix="%">0%</div>
-            <p class="text-label-md opacity-70 uppercase mb-4">DSGVO konform</p>
-            <p class="text-body-sm opacity-90 leading-relaxed">On-Premise: Patientendaten bleiben in Ihrer Praxis. Ende-zu-Ende verschlüsselt, Serverstandort Österreich.</p>
+            <p class="text-label-md opacity-70 uppercase mb-4">bestätigungspflichtig</p>
+            <p class="text-body-sm opacity-90 leading-relaxed">Jede klinisch relevante Schreibaktion wird vorher angezeigt und ärztlich freigegeben. Ohne Ausnahme.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================= PRODUKT / FEATURES ============================= -->
-  <section class="scroll-mt-28 py-24 bg-surface-container-low border-y border-outline-variant" id="produkt">
-    <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-2xl mx-auto text-center mb-20">
-        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Produkt</span>
-        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Medizin. Vereinfacht.</h2>
-        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
-          Docline arbeitet für den Arzt, nicht umgekehrt. Unsere KI versteht den medizinischen Kontext in Echtzeit.
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <!-- Feature 1 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-          <div class="card rounded-[24px] p-8 md:p-12 flex flex-col justify-center" data-reveal="left">
-            <span class="pill mb-6 self-start"><span class="material-symbols-outlined text-sm">mic</span>Echtzeit-Input</span>
-            <h3 class="text-headline-lg md:text-[36px] md:leading-[44px] font-bold mb-5">Sprachsteuerung</h3>
-            <p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
-              Docline hört im Hintergrund zu und transkribiert medizinische Fachterminologie mit höchster Präzision.
-              <span class="text-primary font-semibold">Kein manuelles Tippen mehr während der Untersuchung.</span>
-              Volle Konzentration auf den Patienten.
-            </p>
-            <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant">
-              <div class="w-2.5 h-2.5 bg-primary rounded-full blink shrink-0"></div>
-              <span class="text-body-sm italic font-medium">„Hört zu… Patient klagt über Kopfschmerz…“</span>
-            </div>
-          </div>
-          <div class="card rounded-[24px] p-8 md:p-12 flex flex-col items-center justify-center" data-reveal="right" style="--d:120ms">
-            <div class="py-4">
-              <div class="dl-orb dl-orb--listening" aria-hidden="true" style="--dl-orb-ring:rgba(20,22,28,0.30);--dl-orb-core:#16191f;--dl-orb-halo:rgba(10,10,10,0.06);width:170px;height:170px;">
-                <div class="dl-orb-halo"></div>
-                <div class="dl-orb-ring"></div>
-                <div class="dl-orb-ring-2"></div>
-                <div class="dl-orb-core" style="width:71px;height:71px;">
-                  <div class="dl-orb-wave"><span></span><span></span><span></span><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-6 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wide text-primary">
-              <span class="w-2 h-2 rounded-full bg-primary blink"></span> Hört zu
-            </div>
-            <div class="mt-4 w-full max-w-sm p-3 rounded-xl bg-surface-container-low border border-outline-variant">
-              <p class="text-[13px] text-on-surface italic text-center">„Patientin klagt über Kopfschmerz…“</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-          <div class="card card--dark rounded-[24px] p-8 md:p-12 text-on-primary order-2 lg:order-1" data-reveal="left">
-            <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-              <span class="material-symbols-outlined text-[120px]">neurology</span>
-            </div>
-            <h3 class="text-headline-lg md:text-[36px] md:leading-[44px] font-bold mb-5">Agentische Workflows</h3>
-            <p class="text-body-lg mb-8 opacity-90 leading-relaxed">
-              Docline automatisiert Ihre Dokumentation im Hintergrund: Es versteht den medizinischen Kontext, schlägt Kodierung und nächste Schritte vor und bereitet den Arztbrief vor. Jeder Schritt bleibt dabei vollständig auditierbar und ärztlich freigegeben.
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-4 text-body-md bg-white/10 p-4 rounded-xl">
-                <span class="material-symbols-outlined text-secondary-fixed">task_alt</span>
-                ICD-10-Codierung als prüfbarer Vorschlag
-              </li>
-              <li class="flex items-center gap-4 text-body-md bg-white/10 p-4 rounded-xl">
-                <span class="material-symbols-outlined text-secondary-fixed">task_alt</span>
-                Kontextsensitive Vorschläge – Freigabe bleibt beim Arzt
-              </li>
-            </ul>
-          </div>
-          <div class="card rounded-[24px] p-8 md:p-12 flex flex-col justify-center order-1 lg:order-2" data-reveal="right" style="--d:120ms">
-            <span class="pill mb-6 self-start"><span class="material-symbols-outlined text-sm">smart_toy</span>KI-Intelligenz</span>
-            <h3 class="text-headline-lg font-bold mb-5">Was uns besonders macht</h3>
-            <p class="text-body-lg text-on-surface-variant leading-relaxed">
-              Docline hört mit, strukturiert das Gespräch und bereitet Diagnose-Kandidaten sowie einen Arztbrief-Entwurf vor – noch während der Konsultation. Übernommen wird nichts ohne Ihre Freigabe. So geben wir Ärzten ihre wertvollste Ressource zurück: Zeit.
-            </p>
-          </div>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-          <div class="card rounded-[24px] p-8 md:p-12 flex flex-col justify-center" data-reveal="left">
-            <span class="pill mb-6 self-start"><span class="material-symbols-outlined text-sm">verified</span>Qualitätssicherung</span>
-            <h3 class="text-headline-lg md:text-[36px] md:leading-[44px] font-bold mb-5">Arztbrief-Abgleich</h3>
-            <p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
-              Docline prüft bestehende Befunde und gleicht sie automatisch mit der aktuellen Dokumentation ab.
-              <span class="text-primary font-semibold">Nachvollziehbar, konsistent und DSGVO-konform.</span>
-            </p>
-            <div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
-              <div class="flex justify-between items-center mb-3">
-                <span class="text-label-md font-bold uppercase">Bestätigungspflichtig</span>
-                <span class="text-headline-md font-bold text-primary count" data-count="100" data-suffix="%">0%</span>
-              </div>
-              <div class="w-full bg-outline-variant h-2.5 rounded-full overflow-hidden">
-                <div class="bg-primary h-full rounded-full" data-bar style="width:0%;transition:width 1.4s var(--ease)"></div>
-              </div>
-              <p class="text-body-sm text-on-surface-variant mt-3">Jede klinisch relevante KI-Aktion wird vor der Ausführung ärztlich freigegeben.</p>
-            </div>
-          </div>
-          <div class="card rounded-[24px] p-8 md:p-12 flex flex-col justify-center" data-reveal="right" style="--d:120ms">
-            <div class="icon-tile mb-8"><span class="material-symbols-outlined">description</span></div>
-            <div class="space-y-4">
-              <div class="h-4 bg-surface-dim rounded w-full"></div>
-              <div class="h-4 bg-surface-dim rounded w-5/6"></div>
-              <div class="h-4 bg-surface-dim rounded w-4/6"></div>
-              <div class="flex flex-wrap gap-2 pt-4">
-                <span class="px-3 py-1.5 rounded-full bg-secondary-fixed text-[11px] font-semibold">VORBEFUNDE MATCH</span>
-                <span class="px-3 py-1.5 rounded-full bg-secondary-fixed text-[11px] font-semibold">ICD-10 VALIDIERT</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================= ABLAUF / PROZESS ============================= -->
-  <section id="ablauf" class="scroll-mt-28 py-24 relative overflow-hidden">
+  <!-- ============================= ABLAUF ============================= -->
+  <section id="ablauf" class="scroll-mt-28 py-24 relative overflow-hidden bg-surface-container-low border-y border-outline-variant">
     <div class="bg-glow w-[600px] h-[400px] top-20 -left-40" aria-hidden="true"></div>
     <div class="relative container mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,380px)_1fr] gap-12 lg:gap-20">
         <div class="lg:sticky lg:top-32 lg:self-start">
-          <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Ablauf</span>
+          <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Der Ablauf</span>
           <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Vom Gespräch zur fertigen Akte.</h2>
-          <p class="text-body-lg text-on-surface-variant mb-8" data-reveal="up" style="--d:160ms">
+          <p class="text-body-lg text-on-surface-variant mb-6" data-reveal="up" style="--d:160ms">
             Vier Schritte, die parallel zur Behandlung laufen. Sie sprechen mit dem Patienten – Docline arbeitet mit.
           </p>
-          <button class="btn btn-primary px-7 py-3.5 rounded-full font-label-md inline-flex items-center gap-2" data-reveal="up" style="--d:240ms">
+          <p class="text-body-md text-on-surface-variant mb-8" data-reveal="up" style="--d:220ms">
+            Zwischen Schritt 3 und 4 liegt der entscheidende Unterschied: Docline hält an, bis Sie entschieden haben.
+          </p>
+          <button class="btn btn-primary px-7 py-3.5 rounded-full font-label-md inline-flex items-center gap-2" data-reveal="up" style="--d:280ms">
             Ablauf live sehen
             <span class="btn-arrow material-symbols-outlined text-lg">arrow_forward</span>
           </button>
         </div>
 
-        <div id="steps" class="relative pl-0">
+        <div id="steps" class="relative">
           <div class="rail" aria-hidden="true"><div class="rail__fill" id="rail-fill"></div></div>
 
           <div class="space-y-5">
@@ -714,7 +698,7 @@
                   <span class="material-symbols-outlined text-primary">hearing</span>
                   <h3 class="text-headline-md font-semibold text-primary">Zuhören</h3>
                 </div>
-                <p class="text-body-md text-on-surface-variant">Der Voice Mode läuft im Hintergrund mit und transkribiert das Gespräch inklusive medizinischer Fachterminologie – ohne Tippen, ohne Diktiergerät.</p>
+                <p class="text-body-md text-on-surface-variant">Das Gespräch wird lokal transkribiert – die Spracherkennung läuft auf Ihrer Hardware, das Audio verlässt die Praxis nicht.</p>
               </div>
             </div>
 
@@ -722,10 +706,10 @@
               <div class="step-num">02</div>
               <div class="card rounded-[20px] p-6 md:p-7 flex-1">
                 <div class="flex items-center gap-3 mb-3">
-                  <span class="material-symbols-outlined text-primary">psychology</span>
+                  <span class="material-symbols-outlined text-primary">account_tree</span>
                   <h3 class="text-headline-md font-semibold text-primary">Verstehen</h3>
                 </div>
-                <p class="text-body-md text-on-surface-variant">Docline strukturiert das Gesagte in Anamnese, Befund und Diagnose, verknüpft es mit Dauerdiagnosen, Allergien und Vorbefunden aus der Akte.</p>
+                <p class="text-body-md text-on-surface-variant">Ein Planer zerlegt das Gesagte in Arbeitsschritte, ein Supervisor leitet sie an die zuständige Fachdomäne weiter – Patient, Termin, Dokumentation, Verordnung oder Abrechnung.</p>
               </div>
             </div>
 
@@ -733,12 +717,15 @@
               <div class="step-num">03</div>
               <div class="card rounded-[20px] p-6 md:p-7 flex-1">
                 <div class="flex items-center gap-3 mb-3">
-                  <span class="material-symbols-outlined text-primary">lightbulb</span>
+                  <span class="material-symbols-outlined text-primary">rate_review</span>
                   <h3 class="text-headline-md font-semibold text-primary">Vorschlagen</h3>
                 </div>
-                <p class="text-body-md text-on-surface-variant mb-4">ICD-10-Codes, Verordnungen und ein Arztbrief-Entwurf werden vorbereitet – als Vorschlag, sichtbar vor der Ausführung.</p>
+                <p class="text-body-md text-on-surface-variant mb-4">Sie sehen den fertigen Vorschlag inklusive Konfidenz und – falls die KI unsicher ist – dem Grund dafür. Jeder Vorschlag hat einen manuellen Zielort, falls Sie ihn lieber selbst erledigen.</p>
                 <div class="rounded-xl border border-outline-variant bg-surface-container-low p-3.5">
-                  <div class="text-[11px] font-bold uppercase tracking-wide text-primary mb-1.5">Vorschlag</div>
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <span class="text-[11px] font-bold uppercase tracking-wide text-primary">Vorschlag</span>
+                    <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-[11px] font-bold text-on-surface-variant">Konfidenz hoch</span>
+                  </div>
                   <div class="flex items-center gap-2 text-[13px]">
                     <span class="px-1.5 py-0.5 rounded bg-surface-container-high text-[11px] font-mono">R51</span>
                     <span class="text-on-surface">Kopfschmerz</span>
@@ -754,69 +741,10 @@
                   <span class="material-symbols-outlined text-primary">how_to_reg</span>
                   <h3 class="text-headline-md font-semibold text-primary">Freigeben</h3>
                 </div>
-                <p class="text-body-md text-on-surface-variant">Sie bestätigen oder lehnen ab. Erst dann wird geschrieben – protokolliert im Audit-Trail und jederzeit umkehrbar.</p>
+                <p class="text-body-md text-on-surface-variant">Sie bestätigen oder lehnen ab. Erst danach wird geschrieben – mit Modell, Prompt-Version und Auslöser im Audit-Trail.</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================= FUNKTIONEN (BENTO) ============================= -->
-  <section id="funktionen" class="scroll-mt-28 py-24 bg-surface-container-low border-y border-outline-variant">
-    <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-2xl mx-auto text-center mb-16">
-        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Alles an einem Ort</span>
-        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Eine Software für den ganzen Praxistag</h2>
-        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
-          Docline automatisiert die Verwaltung rund um die Behandlung – von der Terminplanung bis zur Abrechnung. Jeder Schritt bleibt dabei nachvollziehbar protokolliert.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-stagger>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">calendar_month</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Termine &amp; Wartezimmer</h3>
-          <p class="text-body-sm text-on-surface-variant">Kalender, Ressourcenplanung und Tagesüberblick im Heute-Workspace.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">folder_shared</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Patientenakte</h3>
-          <p class="text-body-sm text-on-surface-variant">Longitudinale Akte mit Allergien, Vitalwerten, Diagnosen und Verlauf.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">clinical_notes</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Dokumentation</h3>
-          <p class="text-body-sm text-on-surface-variant">Anamnese, Befund, Diagnose und Arztbrief – per Sprache automatisiert vorbereitet.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">prescriptions</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Verordnung</h3>
-          <p class="text-body-sm text-on-surface-variant">Rezept, Krankmeldung und Überweisung inkl. Medikations-Sicherheitscheck.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">science</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Labor</h3>
-          <p class="text-body-sm text-on-surface-variant">Befund-Upload mit automatischer Extraktion und Alert-Queue für kritische Werte.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">receipt_long</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Abrechnung</h3>
-          <p class="text-body-sm text-on-surface-variant">Kassentarif und Wahlarzt-Honorarnote – auf das österreichische System zugeschnitten.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">forum</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Kommunikation</h3>
-          <p class="text-body-sm text-on-surface-variant">Interne und patientenbezogene Nachrichten an einem zentralen Ort.</p>
-        </div>
-        <div class="card p-7 rounded-[20px]" data-reveal="up">
-          <div class="flex items-center justify-between mb-5">
-            <div class="icon-tile"><span class="material-symbols-outlined">health_and_safety</span></div>
-            <span class="px-2.5 py-1 rounded-full border border-outline-variant bg-surface-container-high text-[10px] font-bold uppercase tracking-wide text-on-surface-variant">Bald</span>
-          </div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">e-card &amp; ELGA</h3>
-          <p class="text-body-sm text-on-surface-variant">Anbindung an e-card und ELGA (SVC) – als Nächstes in Umsetzung.</p>
         </div>
       </div>
     </div>
@@ -826,39 +754,235 @@
   <section id="sicherheit" class="scroll-mt-28 py-24">
     <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="max-w-2xl mx-auto text-center mb-16">
-        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Sicherheit &amp; Kontrolle</span>
+        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Sicherheitsarchitektur</span>
         <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Die KI schlägt vor. Sie entscheiden.</h2>
         <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
-          Docline führt keine klinisch relevante Aktion ohne ärztliche Freigabe aus. Jeder Schritt ist vorher sichtbar, nachvollziehbar und umkehrbar.
+          Das ist keine Einstellung, die man wegklicken kann, sondern die Bauweise des Systems. Vier Mechanismen sorgen dafür.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" data-stagger>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto mb-5" data-stagger>
         <div class="card p-8 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">preview</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Vorschau vor Ausführung</h3>
-          <p class="text-body-sm text-on-surface-variant">Vorschau → Freigabe → Ausführung. Nichts wird ungefragt in die Akte geschrieben.</p>
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">lock_person</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-3">Die KI kann nicht schreiben</h3>
+          <p class="text-body-md text-on-surface-variant">Werkzeuge, die tatsächlich in die Akte schreiben, sind dem Sprachmodell technisch gar nicht zugänglich. Es kann ausschließlich Vorschläge erzeugen – den Schreibpfad öffnet erst Ihre Bestätigung.</p>
         </div>
+
         <div class="card p-8 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">history</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Lückenloser Audit-Trail</h3>
-          <p class="text-body-sm text-on-surface-variant">Jede manuelle und KI-Aktion wird mit Quelle und Modell-Metadaten protokolliert.</p>
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">verified_user</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-3">Freigaben sind fälschungssicher</h3>
+          <p class="text-body-md text-on-surface-variant">Jede Bestätigung wird serverseitig gegen den ursprünglich erzeugten Vorschlag geprüft. Ein manipulierter Client kann keine Aktion auslösen, die so nie vorgeschlagen wurde.</p>
         </div>
+
         <div class="card p-8 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">undo</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Umkehrbar</h3>
-          <p class="text-body-sm text-on-surface-variant">Jede bestätigte Aktion bleibt nachvollziehbar und lässt sich rückgängig machen.</p>
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">block</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-3">Keine erfundenen Ergebnisse</h3>
+          <p class="text-body-md text-on-surface-variant">Findet Docline für einen Kernworkflow kein passendes Werkzeug, rät es nicht. Es übergibt an den manuellen Weg und sagt Ihnen, warum. Diese Regel ist im Code durch Tests abgesichert.</p>
         </div>
+
         <div class="card p-8 rounded-[20px]" data-reveal="up">
-          <div class="icon-tile mb-5"><span class="material-symbols-outlined">keyboard</span></div>
-          <h3 class="text-headline-md font-semibold text-primary mb-2">Manueller Fallback</h3>
-          <p class="text-body-sm text-on-surface-variant">Jeder assistierte Weg hat eine verlässliche Route – ganz ohne Sprache und KI.</p>
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">fact_check</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-3">Jede Aktion ist nachvollziehbar</h3>
+          <p class="text-body-md text-on-surface-variant">Der Audit-Trail hält fest, ob eine Aktion von einem Menschen oder der KI ausging – inklusive verwendetem Modell und Prompt-Version. Grundlage für die Dokumentationspflichten des EU AI Act.</p>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto card card--dark rounded-[20px] p-8 md:p-10 text-on-primary" data-reveal="up">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div>
+            <span class="pill pill--dark mb-5"><span class="material-symbols-outlined text-sm">keyboard</span>Der manuelle Pfad</span>
+            <h3 class="text-headline-lg font-bold mb-3">Docline darf ausfallen.</h3>
+            <p class="text-body-lg opacity-90 leading-relaxed">
+              Der Sprachdienst läuft als eigener Prozess neben dem Kernsystem. Fällt er aus, bleibt die Praxissoftware vollständig bedienbar – jeder assistierte Weg hat eine verlässliche Route ohne Sprache und ohne KI. Kernprozesse arbeiten auch ohne Internet weiter.
+            </p>
+          </div>
+          <div class="flex md:flex-col gap-3 shrink-0">
+            <div class="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white/10 text-body-sm font-semibold whitespace-nowrap">
+              <span class="material-symbols-outlined text-base">wifi_off</span> Offline-fähig
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white/10 text-body-sm font-semibold whitespace-nowrap">
+              <span class="material-symbols-outlined text-base">accessibility_new</span> Tastaturbedienbar
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= DATENHOHEIT ============================= -->
+  <section id="datenhoheit" class="scroll-mt-28 py-24 bg-surface-container-low border-y border-outline-variant">
+    <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Datenhoheit</span>
+          <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-5" data-reveal="blur" style="--d:80ms">Ihre Praxis ist der Serverstandort.</h2>
+          <p class="text-body-lg text-on-surface-variant mb-6" data-reveal="up" style="--d:160ms">
+            Docline ist für den Betrieb in der Praxis gebaut, nicht für ein Rechenzentrum, das Ihnen nicht gehört. Datenbank, Spracherkennung und Anwendung laufen auf Ihrer Hardware.
+          </p>
+          <p class="text-body-md text-on-surface-variant" data-reveal="up" style="--d:220ms">
+            Für das Sprachmodell haben Sie die Wahl: vollständig lokal betrieben, sodass keinerlei Inhalte die Praxis verlassen – oder ein Cloud-Modell, wenn Sie mehr Leistung wollen. Die Entscheidung ist Konfiguration, nicht Umbau.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-stagger>
+          <div class="card p-6 rounded-[20px]" data-reveal="up">
+            <div class="icon-tile mb-4"><span class="material-symbols-outlined">graphic_eq</span></div>
+            <h3 class="text-headline-md font-semibold text-primary mb-2">Sprache bleibt lokal</h3>
+            <p class="text-body-sm text-on-surface-variant">Die Transkription läuft auf Ihrem Rechner. Aufnahmen werden nicht zur Verarbeitung nach außen gegeben.</p>
+          </div>
+          <div class="card p-6 rounded-[20px]" data-reveal="up">
+            <div class="icon-tile mb-4"><span class="material-symbols-outlined">memory</span></div>
+            <h3 class="text-headline-md font-semibold text-primary mb-2">Sprachmodell wahlweise lokal</h3>
+            <p class="text-body-sm text-on-surface-variant">Betreiben Sie das Modell im Haus – oder nutzen Sie ein Cloud-Modell. Beides ist ein unterstützter Betriebsmodus.</p>
+          </div>
+          <div class="card p-6 rounded-[20px]" data-reveal="up">
+            <div class="icon-tile mb-4"><span class="material-symbols-outlined">database</span></div>
+            <h3 class="text-headline-md font-semibold text-primary mb-2">FHIR R4 nativ</h3>
+            <p class="text-body-sm text-on-surface-variant">Daten liegen als standardisierte FHIR-Ressourcen in Ihrer eigenen Datenbank – exportierbar, nicht eingesperrt.</p>
+          </div>
+          <div class="card p-6 rounded-[20px]" data-reveal="up">
+            <div class="icon-tile mb-4"><span class="material-symbols-outlined">shield_person</span></div>
+            <h3 class="text-headline-md font-semibold text-primary mb-2">Zugriff nach Rolle</h3>
+            <p class="text-body-sm text-on-surface-variant">Rollen, Berechtigungen, Patienten-Einwilligung und protokollierter Notfallzugriff sind eingebaut.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= MODULE ============================= -->
+  <section id="module" class="scroll-mt-28 py-24">
+    <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Der ganze Praxistag</span>
+        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Eine Software, kein Flickenteppich</h2>
+        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
+          Von der Terminplanung bis zur Abrechnung. Jedes Modul ist per Sprache erreichbar – und per Maus und Tastatur genauso.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-stagger>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">today</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Heute-Workspace</h3>
+          <p class="text-body-sm text-on-surface-variant">Agenda, Wartezimmer, Aufgaben und Posteingang als Einstieg in den Tag.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">folder_shared</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Patientenakte</h3>
+          <p class="text-body-sm text-on-surface-variant">Longitudinale Akte mit Allergien, Vitalwerten, Versicherung, Diagnosen und Verlauf.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">calendar_month</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Terminplanung</h3>
+          <p class="text-body-sm text-on-surface-variant">Kalender, Slot-Suche, Warteliste sowie Ressourcen- und Terminarten-Verwaltung.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">clinical_notes</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Konsultation</h3>
+          <p class="text-body-sm text-on-surface-variant">Anamnese, Befund, Diagnose und Therapie mit Arztbrief-Erzeugung und Abschluss.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">prescriptions</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Verordnung</h3>
+          <p class="text-body-sm text-on-surface-variant">Rezept und Krankmeldung inklusive Medikations-Sicherheitscheck.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">science</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Labor</h3>
+          <p class="text-body-sm text-on-surface-variant">Befund-Upload mit Wert-Extraktion und Alert-Queue für kritische Werte.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">description</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Befunde &amp; Dokumente</h3>
+          <p class="text-body-sm text-on-surface-variant">Dokumentsuche, Detailvorschau und Medikationsänderungen aus Fremdbefunden.</p>
+        </div>
+        <div class="card p-7 rounded-[20px]" data-reveal="up">
+          <div class="icon-tile mb-5"><span class="material-symbols-outlined">settings_account_box</span></div>
+          <h3 class="text-headline-md font-semibold text-primary mb-2">Verwaltung</h3>
+          <p class="text-body-sm text-on-surface-variant">Organisation, Benutzer, Rollen, Praxisstammdaten und Sicherheitseinstellungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= STATUS & ROADMAP ============================= -->
+  <section id="status" class="scroll-mt-28 py-24 bg-surface-container-low border-y border-outline-variant">
+    <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>Ehrlicher Zwischenstand</span>
+        <h2 class="text-headline-lg md:text-[40px] md:leading-[48px] font-bold text-primary mb-4" data-reveal="blur" style="--d:80ms">Wo Docline heute steht</h2>
+        <p class="text-body-lg text-on-surface-variant" data-reveal="up" style="--d:160ms">
+          Docline ist in der Pilotphase. Wir sagen Ihnen lieber genau, was läuft und was noch nicht, als Sie später zu enttäuschen.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4" data-stagger>
+        <div class="card card--static phase phase--done p-7 md:p-8 rounded-[20px]" data-reveal="up">
+          <div class="flex items-start gap-5">
+            <div class="phase__dot mt-2"></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <h3 class="text-headline-md font-semibold text-primary">Basis-Praxissoftware</h3>
+                <span class="phase__tag">Läuft heute</span>
+              </div>
+              <p class="text-body-md text-on-surface-variant">
+                Patientenakte, Terminplanung, Konsultations-Workspace, Verordnung, Labor, Dokumente und Verwaltung sind nutzbar. Der Sprachpfad ist für Patienten-, Termin- und ausgewählte Dokumentations-Workflows durchgängig verdrahtet – inklusive Freigabe- und Audit-Contract.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--static phase phase--now p-7 md:p-8 rounded-[20px]" data-reveal="up">
+          <div class="flex items-start gap-5">
+            <div class="phase__dot mt-2"></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <h3 class="text-headline-md font-semibold text-primary">Österreich-Anbindung</h3>
+                <span class="phase__tag">In Arbeit</span>
+              </div>
+              <p class="text-body-md text-on-surface-variant">
+                e-card und SVC-Anbindung sowie die österreichische Kassen- und Wahlarztabrechnung inklusive Honorarnote sind der aktuelle Schwerpunkt. Kassentarif-Prüfung existiert bereits, die Anbindung an die echten Schnittstellen steht noch aus.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--static phase p-7 md:p-8 rounded-[20px]" data-reveal="up">
+          <div class="flex items-start gap-5">
+            <div class="phase__dot mt-2"></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <h3 class="text-headline-md font-semibold text-primary">ELGA-Interoperabilität</h3>
+                <span class="phase__tag">Geplant</span>
+              </div>
+              <p class="text-body-md text-on-surface-variant">
+                Anbindung an ELGA und e-Medikation, damit Befunde und Medikationsdaten nicht mehr manuell zusammengesucht werden müssen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--static phase p-7 md:p-8 rounded-[20px]" data-reveal="up">
+          <div class="flex items-start gap-5">
+            <div class="phase__dot mt-2"></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <h3 class="text-headline-md font-semibold text-primary">Passives Mithören</h3>
+                <span class="phase__tag">Geplant</span>
+              </div>
+              <p class="text-body-md text-on-surface-variant">
+                Heute sagen Sie Docline, was zu tun ist. Das Ziel ist die durchgehend mitlaufende Konsultation, in der Sie nur noch prüfen und freigeben – Autonomie immer gebunden an Rollen, Einwilligung und Freigaben.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================= FAQ ============================= -->
-  <section id="faq" class="scroll-mt-28 py-24 bg-surface-container-low border-y border-outline-variant">
+  <section id="faq" class="scroll-mt-28 py-24">
     <div class="container mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="max-w-2xl mx-auto text-center mb-14">
         <span class="pill mb-6" data-reveal="up"><span class="pill-dot"></span>FAQ</span>
@@ -871,51 +995,71 @@
       <div class="max-w-3xl mx-auto space-y-3" id="faq-list" data-stagger>
         <div class="faq-item" data-reveal="up">
           <button class="faq-q" type="button" aria-expanded="false">
-            <span class="text-headline-md font-semibold text-primary">Wo werden die Patientendaten gespeichert?</span>
-            <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
-          </button>
-          <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
-            Der Serverstandort ist Österreich, die Übertragung erfolgt Ende-zu-Ende verschlüsselt. Auf Wunsch ist ein On-Premise-Betrieb möglich – dann bleiben die Patientendaten physisch in Ihrer Praxis.
-          </div></div>
-        </div>
-
-        <div class="faq-item" data-reveal="up">
-          <button class="faq-q" type="button" aria-expanded="false">
             <span class="text-headline-md font-semibold text-primary">Schreibt die KI eigenständig in die Akte?</span>
             <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
           </button>
           <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
-            Nein. Jede klinisch relevante Aktion durchläuft den Ablauf Vorschau → ärztliche Freigabe → Ausführung. Ohne Ihre Bestätigung wird nichts übernommen, und bestätigte Aktionen bleiben umkehrbar.
+            Nein – und zwar nicht als Einstellung, sondern durch die Architektur. Werkzeuge, die schreiben, sind dem Sprachmodell gar nicht zugänglich. Es kann nur Vorschläge erzeugen. Erst Ihre Bestätigung öffnet den Schreibpfad, und diese Bestätigung wird serverseitig gegen den ursprünglichen Vorschlag geprüft.
           </div></div>
         </div>
 
         <div class="faq-item" data-reveal="up">
           <button class="faq-q" type="button" aria-expanded="false">
-            <span class="text-headline-md font-semibold text-primary">Funktioniert Docline auch ohne Sprachsteuerung?</span>
+            <span class="text-headline-md font-semibold text-primary">Verlassen Patientendaten die Praxis?</span>
             <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
           </button>
           <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
-            Ja. Für jeden assistierten Weg existiert eine vollständige manuelle Route – Dokumentation, Verordnung und Abrechnung lassen sich jederzeit ohne Sprache und ohne KI bedienen.
+            Das hängt von Ihrer Konfiguration ab, und wir sagen es offen: Anwendung, Datenbank und Spracherkennung laufen immer lokal, Audioaufnahmen verlassen die Praxis nie. Für das Sprachmodell können Sie zwischen einem lokal betriebenen Modell – dann bleibt alles im Haus – und einem leistungsfähigeren Cloud-Modell wählen. Beim Cloud-Betrieb werden Gesprächsinhalte zur Verarbeitung an den Anbieter übermittelt. Welcher Modus für Ihre Praxis der richtige ist, klären wir im Erstgespräch.
           </div></div>
         </div>
 
         <div class="faq-item" data-reveal="up">
           <button class="faq-q" type="button" aria-expanded="false">
-            <span class="text-headline-md font-semibold text-primary">Ist die Abrechnung auf Österreich zugeschnitten?</span>
+            <span class="text-headline-md font-semibold text-primary">Was passiert, wenn die KI etwas nicht versteht?</span>
             <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
           </button>
           <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
-            Ja. Docline deckt Kassentarif und Wahlarzt-Honorarnote ab. Die Anbindung an e-card und ELGA (SVC) ist als nächster Schritt in Umsetzung.
+            Dann rät sie nicht. Findet Docline für einen Kernworkflow kein passendes Werkzeug oder ist die Konfidenz zu niedrig, übergibt es an den manuellen Weg und nennt den Grund. Jeder Vorschlag trägt außerdem einen Konfidenzwert, damit Sie einordnen können, wie sicher sich das System ist.
           </div></div>
         </div>
 
         <div class="faq-item" data-reveal="up">
           <button class="faq-q" type="button" aria-expanded="false">
-            <span class="text-headline-md font-semibold text-primary">Wie kann ich Docline ausprobieren?</span>
+            <span class="text-headline-md font-semibold text-primary">Funktioniert Docline ohne Sprachsteuerung?</span>
             <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
           </button>
           <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
-            Docline startet mit ausgewählten Pilotpraxen in Österreich. Über „Demo anfordern“ vereinbaren wir einen Termin, in dem wir den Voice Mode an Ihren Abläufen zeigen.
+            Ja, vollständig. Der Sprachdienst läuft als eigener Prozess neben dem Kernsystem und darf ausfallen, ohne die Praxissoftware unbenutzbar zu machen. Jeder assistierte Weg hat eine verlässliche Route ohne Sprache und ohne KI, und zentrale Workflows sind per Tastatur bedienbar.
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-reveal="up">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="text-headline-md font-semibold text-primary">Kann ich e-card und ELGA schon nutzen?</span>
+            <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
+          </button>
+          <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
+            Noch nicht. Die e-card-/SVC-Anbindung ist unser aktueller Schwerpunkt, ELGA folgt danach. Auch die österreichische Kassenabrechnung und die Wahlarzt-Honorarnote sind in Arbeit, nicht fertig. Wenn Sie darauf heute angewiesen sind, ist Docline noch nicht das richtige System für Sie – sagen Sie uns Bescheid, wir melden uns, sobald es soweit ist.
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-reveal="up">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="text-headline-md font-semibold text-primary">Komme ich an meine Daten heran?</span>
+            <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
+          </button>
+          <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
+            Ja. Docline speichert klinische Daten als FHIR-R4-Ressourcen in Ihrer eigenen PostgreSQL-Datenbank – ein internationaler Standard, kein proprietäres Format. Sie behalten den direkten Zugriff auf Ihre Daten und sind nicht von uns abhängig, um sie zu exportieren.
+          </div></div>
+        </div>
+
+        <div class="faq-item" data-reveal="up">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="text-headline-md font-semibold text-primary">Wie läuft die Pilotphase ab?</span>
+            <span class="faq-icon"><span class="material-symbols-outlined text-lg">add</span></span>
+          </button>
+          <div class="faq-a"><div class="px-6 pb-6 text-body-md text-on-surface-variant leading-relaxed">
+            Wir starten mit wenigen ausgewählten Praxen in Österreich. Im Erstgespräch zeigen wir Docline an Ihren Abläufen, klären Betriebsmodus und Hardware und legen gemeinsam fest, welche Workflows Sie zuerst produktiv nutzen. Als Pilotpraxis haben Sie direkten Einfluss darauf, was wir als Nächstes bauen.
           </div></div>
         </div>
       </div>
@@ -927,20 +1071,23 @@
     <div class="cta-grid" aria-hidden="true"></div>
     <div class="relative container mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="max-w-3xl mx-auto text-center">
-        <span class="pill pill--dark mb-8" data-reveal="up"><span class="pill-dot"></span>Pilotphase</span>
-        <h2 class="text-headline-lg md:text-[48px] md:leading-[56px] font-bold mb-6" data-reveal="blur" style="--d:80ms">Bereit für den digitalen Sprung?</h2>
+        <span class="pill pill--dark mb-8" data-reveal="up"><span class="pill-dot"></span>Pilotphase Österreich</span>
+        <h2 class="text-headline-lg md:text-[48px] md:leading-[56px] font-bold mb-6" data-reveal="blur" style="--d:80ms">Bauen Sie mit, statt später umzusteigen.</h2>
         <p class="text-body-lg opacity-90 mb-10" data-reveal="up" style="--d:160ms">
-          Docline startet mit ausgewählten Pilotpraxen in Österreich. Sichern Sie sich frühzeitig Ihren Zugang – und gestalten Sie die Praxissoftware von morgen mit.
+          Docline startet mit wenigen Praxen in Österreich. Wer jetzt einsteigt, bestimmt mit, welche Workflows als Nächstes entstehen – und bekommt ein System, das zum eigenen Praxisalltag passt.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-3" data-reveal="up" style="--d:240ms">
           <button class="btn px-9 py-4 bg-surface-container-lowest text-primary rounded-full font-label-md hover:bg-surface-container-low shadow-xl inline-flex items-center justify-center gap-2">
-            Jetzt kostenlos testen
+            Pilotpraxis werden
             <span class="btn-arrow material-symbols-outlined text-lg">arrow_forward</span>
           </button>
           <button class="btn px-9 py-4 border border-white/25 text-on-primary rounded-full font-label-md hover:bg-white/10">
-            Beratungstermin vereinbaren
+            Erstgespräch vereinbaren
           </button>
         </div>
+        <p class="text-body-sm opacity-60 mt-8" data-reveal="up" style="--d:300ms">
+          Kein Vertriebsgespräch, sondern ein technisches Erstgespräch – mit ehrlicher Einschätzung, ob Docline heute zu Ihrer Praxis passt.
+        </p>
       </div>
     </div>
   </section>
@@ -953,18 +1100,18 @@
       <div>
         <div class="text-headline-md font-bold text-primary mb-2 tracking-tight">Docline</div>
         <p class="text-body-sm text-on-surface-variant max-w-xs mb-6">
-          Medicine. Simplified. Sprachgesteuerte, DSGVO-konforme Praxissoftware für Österreich.
+          Voice-first Praxissoftware für Österreich. Die KI schlägt vor, die Ärztin entscheidet.
         </p>
-        <span class="pill text-[11px]"><span class="pill-dot"></span>Serverstandort Österreich</span>
+        <span class="pill text-[11px]"><span class="pill-dot"></span>On-Premise · Pilotphase</span>
       </div>
 
       <div class="space-y-4">
         <h4 class="text-label-md text-primary uppercase tracking-wider">Produkt</h4>
         <nav class="flex flex-col space-y-2.5">
-          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#produkt">Sprachsteuerung</a>
           <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#ablauf">Ablauf</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#funktionen">Funktionen</a>
           <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#sicherheit">Sicherheit</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#datenhoheit">Datenhoheit</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#module">Module</a>
         </nav>
       </div>
 
@@ -978,17 +1125,17 @@
       </div>
 
       <div class="space-y-4">
-        <h4 class="text-label-md text-primary uppercase tracking-wider">Support</h4>
+        <h4 class="text-label-md text-primary uppercase tracking-wider">Kontakt</h4>
         <nav class="flex flex-col space-y-2.5">
-          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#kontakt">Kontakt</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#kontakt">Erstgespräch</a>
+          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#status">Status</a>
           <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#faq">FAQ</a>
-          <a class="text-on-surface-variant hover:text-primary transition-colors text-body-sm" href="#">Hilfezentrum</a>
         </nav>
       </div>
     </div>
 
     <div class="mt-14 pt-8 border-t border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-body-sm text-on-surface-variant">© <span id="year">2026</span> Docline KI. Medicine. Simplified.</p>
+      <p class="text-body-sm text-on-surface-variant">© <span id="year">2026</span> Docline. Medicine. Simplified.</p>
       <p class="text-body-sm text-on-surface-variant">Made in Austria</p>
     </div>
   </div>
@@ -999,7 +1146,6 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- 1. Scroll-Reveal (einmalig, mit Stagger-Kaskade) ---------- */
-  // Karten-Grids bekommen automatisch eine gestaffelte Verzögerung.
   document.querySelectorAll('[data-stagger]').forEach(group => {
     Array.from(group.children).forEach((child, i) => {
       if (child.hasAttribute('data-reveal') && !child.style.getPropertyValue('--d')) {
@@ -1042,15 +1188,87 @@
 
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
 
-  /* ---------- 3. Fortschrittsbalken ---------- */
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      barObserver.unobserve(entry.target);
-      requestAnimationFrame(() => { entry.target.style.width = '100%'; });
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-bar]').forEach(el => barObserver.observe(el));
+  /* ---------- 3. Konsultations-Loop im Hero ---------- */
+  const loop = document.getElementById('consult-loop');
+  if (loop) {
+    const TEXT = '„…pochende Kopfschmerzen seit drei Tagen, keine Aura, kein Fieber.“';
+    const textEl = loop.querySelector('#loop-text');
+    const caretEl = loop.querySelector('#loop-caret');
+    const timeEl = loop.querySelector('#loop-time');
+    const stages = Array.from(loop.querySelectorAll('.loop__stage'));
+    const confirmBtn = loop.querySelector('#loop-confirm');
+
+    const showFinalState = () => {
+      stages.forEach(s => s.classList.add('on'));
+      textEl.textContent = TEXT;
+      if (caretEl) caretEl.remove();
+      timeEl.textContent = '00:12';
+    };
+
+    if (reduceMotion) {
+      showFinalState();
+    } else {
+      let timeouts = [];
+      let typeTimer = null;
+      let clockTimer = null;
+      let running = false;
+
+      const clearAll = () => {
+        timeouts.forEach(clearTimeout);
+        timeouts = [];
+        if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+        if (clockTimer) { clearInterval(clockTimer); clockTimer = null; }
+      };
+      const at = (ms, fn) => timeouts.push(setTimeout(fn, ms));
+
+      const typeOut = () => {
+        let i = 0;
+        typeTimer = setInterval(() => {
+          textEl.textContent = TEXT.slice(0, ++i);
+          if (i >= TEXT.length) { clearInterval(typeTimer); typeTimer = null; }
+        }, 30);
+      };
+
+      const startClock = () => {
+        let s = 0;
+        timeEl.textContent = '00:00';
+        clockTimer = setInterval(() => {
+          s += 1;
+          timeEl.textContent = '00:' + String(s).padStart(2, '0');
+        }, 1000);
+      };
+
+      const cycle = () => {
+        clearAll();
+        stages.forEach(s => s.classList.remove('on'));
+        confirmBtn.classList.remove('is-pressed');
+        textEl.textContent = '';
+        startClock();
+
+        at(150,  () => stages[0].classList.add('on'));
+        at(600,  typeOut);
+        at(3600, () => stages[1].classList.add('on'));
+        at(5100, () => stages[2].classList.add('on'));
+        at(6900, () => confirmBtn.classList.add('is-pressed'));
+        at(7500, () => stages[3].classList.add('on'));
+        at(11500, cycle);
+      };
+
+      // Nur animieren, solange der Loop sichtbar ist.
+      const loopObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !running) {
+            running = true;
+            cycle();
+          } else if (!entry.isIntersecting && running) {
+            running = false;
+            clearAll();
+          }
+        });
+      }, { threshold: 0.25 });
+      loopObserver.observe(loop);
+    }
+  }
 
   /* ---------- 4. Cursor-Spotlight auf Karten ---------- */
   if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
@@ -1115,13 +1333,11 @@
   document.querySelectorAll('.faq-item').forEach(item => {
     const btn = item.querySelector('.faq-q');
     const panel = item.querySelector('.faq-a');
-    const icon = item.querySelector('.faq-icon .material-symbols-outlined');
 
     const close = (el) => {
       el.classList.remove('is-open');
       el.querySelector('.faq-a').style.height = '0px';
       el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-      el.querySelector('.faq-icon .material-symbols-outlined').textContent = 'add';
     };
 
     btn.addEventListener('click', () => {
@@ -1131,10 +1347,8 @@
       item.classList.add('is-open');
       panel.style.height = panel.scrollHeight + 'px';
       btn.setAttribute('aria-expanded', 'true');
-      icon.textContent = 'add';
     });
   });
-  // Höhe der offenen Antwort bei Resize nachziehen
   window.addEventListener('resize', () => {
     const open = document.querySelector('.faq-item.is-open .faq-a');
     if (open) open.style.height = open.scrollHeight + 'px';
